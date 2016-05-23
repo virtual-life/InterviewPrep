@@ -1,5 +1,5 @@
 /** Time - O(n) */
-class Solution {
+class SolutionRS {
     public String reverseWords(String s) {
         if (s == null || s.length() == 0) {
             return "";
@@ -15,4 +15,42 @@ class Solution {
         }
         return sb.length() == 0 ? "" : sb.toString();
     }
+
+    /**
+     *  In Place
+     */
+    public char[] reverseWordsInPlace(char[] s ) {
+        if(s == null)
+            return null;
+        String str = new String(s);
+        String[] words = str.split(" ");
+        if (words.length <=1)
+            return s;
+
+        s = swap(s, 0, s.length-1);
+        int last = 0;
+        int i = 0;
+        while(i < s.length){
+            while(i < s.length && s[i] != ' '){
+                i++;
+            }
+            s = swap(s, last, i-1);
+            last = i + 1;
+            i = last;
+        }
+        return s;
+    }
+
+    public char[] swap(char[] ch, int l, int r) {
+        while (l < r) {
+            char temp = ch[l];
+            ch[l] = ch[r];
+            ch[r] = temp;
+            l++;
+            r--;
+        }
+        return ch;
+    }
+
 }
+

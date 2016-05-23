@@ -13,6 +13,8 @@
 
  */
 
+import java.util.Set;
+
 /**
  dp[i] is true means [0, i) is segmented using the dictionary.
  So s[0, i) can be segmented if and only if s[0, j) can be segmented AND s[j, i) is in the dictionary.

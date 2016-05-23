@@ -25,7 +25,7 @@
  * }
  */
 import java.util.*;
-public class Solution {
+public class SolutionSD {
 
 
     public String serialize(TreeNode root){
