@@ -20,4 +20,30 @@ public class Solution {
 
         return result;
     }
+
+    /** Better solution using XOR swap
+     *  a function called swapBits(i, j), which swaps the ith bit with the jth bit.
+     *  We only need to perform the swap when the ith bit and the jth bit are different.
+     *  To test if two bits are different, we could use the XOR operation.
+     */
+
+    public int reverseBitsSwap(int n) {
+        for (int i = 0; i < 16; i++) {
+            n = swapBits(n, i, 32 - i - 1);
+        }
+
+        return n;
+    }
+
+    public int swapBits(int n, int i, int j) {
+        int a = (n >> i) & 1;
+        int b = (n >> j) & 1;
+
+        if ((a ^ b) != 0) {
+            return n ^= (1 << i) | (1 << j);
+        }
+
+        return n;
+    }
+
 }
