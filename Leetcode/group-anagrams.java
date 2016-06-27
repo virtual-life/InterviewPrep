@@ -6,9 +6,9 @@
  Return:
 
  [
- ["ate", "eat","tea"],
- ["nat","tan"],
- ["bat"]
+    ["ate", "eat","tea"],
+    ["nat","tan"],
+    ["bat"]
  ]
 
  Note:
@@ -21,7 +21,7 @@
 
 public class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> rst = new ArrayList<List<String>>();
+        List<List<String>> result = new ArrayList<List<String>>();
         HashMap<String, List<String>> map = new HashMap<String, List<String>>();
 
         for(int i = 0; i < strs.length; i++) {
@@ -40,10 +40,10 @@ public class Solution {
 
         for(List<String> val : map.values()) {
             Collections.sort(val,new ListComparator());
-            rst.add(val);
+            result.add(val);
         }
 
-        return rst;
+        return result;
     }
 }
 
