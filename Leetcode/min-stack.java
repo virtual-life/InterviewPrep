@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
@@ -10,7 +13,7 @@
 
 public class MinStack {
 
-    private List<Integer> stack = new ArrayList<Integer>();
+    private List<Integer> stack = new ArrayList<>();
     private List<Integer> min = new ArrayList<Integer>();
 
     public void push(int x) {
