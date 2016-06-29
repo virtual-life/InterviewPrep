@@ -39,7 +39,9 @@ public class Solution {
         }
         return dp[s.length()];
     }
-    
+    /** 
+    DFS in recursive manner. For the substring [0, i) is contained in the dictionary, we recursively start from [i, len) to check the rest of it. 
+    */
     public boolean wordBreak1Recursive(String s, Set<String> dict) {
         if (dict.contains(s)) return true;
          
