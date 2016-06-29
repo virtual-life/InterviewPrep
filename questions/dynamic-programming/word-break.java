@@ -39,4 +39,56 @@ public class Solution {
         }
         return dp[s.length()];
     }
+    
+/**
+Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
+
+ Return all such possible sentences.
+
+For example, given
+s = "catsanddog",
+dict = ["cat", "cats", "and", "sand", "dog"].
+
+A solution is ["cats and dog", "cat sand dog"]
+
+*/
+public List<String> wordBreak2(String s, Set<String> dict) {
+        List<String> result = new ArrayList<String>();
+         
+        if (s == null || s.length() == 0 || dict == null || dict.size() == 0) {
+            return result;
+        }
+         
+        List<String> curr = new ArrayList<String>();
+        wordBreakHelper(0, s, dict, curr, result);
+         
+        return result;
+    }
+     
+    private void wordBreakHelper(int start, String s, Set<String> dict, List<String> curr, List<String> result) {
+        if (start >= s.length()) {
+            String temp = constructString(curr);
+            result.add(temp);
+        }
+         
+        for (int i = start; i < s.length(); i++) {
+            if (dict.contains(s.substring(start, i + 1))) {
+                curr.add(s.substring(start, i + 1));
+                wordBreakHelper(i + 1, s, dict, curr, result);
+                curr.remove(curr.size() - 1);
+            }
+        }
+    }
+     
+    private String constructString(List<String> tokens) {
+        StringBuilder sb = new StringBuilder();
+         
+        for (int i = 0; i < tokens.size() - 1; i++) {
+            sb.append(tokens.get(i) + " ");
+        }
+         
+        sb.append(tokens.get(tokens.size() - 1));
+         
+        return sb.toString();
+    }
 }
