@@ -40,6 +40,21 @@ public class Solution {
         return dp[s.length()];
     }
     
+    public boolean wordBreak1Recursive(String s, Set<String> dict) {
+        if (dict.contains(s)) return true;
+         
+        int len = s.length();
+         
+        for (int i = 1; i < len; i++) {
+            String s1 = s.substring(0, i);
+            if (dict.contains(s1)) {
+                String s2 = s.substring(i, len);
+                if (wordBreak(s2, dict) == true) return true;
+            }
+        }
+        return false;
+    }
+    
 /**
 Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
 
@@ -52,43 +67,47 @@ dict = ["cat", "cats", "and", "sand", "dog"].
 A solution is ["cats and dog", "cat sand dog"]
 
 */
-public List<String> wordBreak2(String s, Set<String> dict) {
-        List<String> result = new ArrayList<String>();
-         
-        if (s == null || s.length() == 0 || dict == null || dict.size() == 0) {
+public ArrayList<String> wordBreak2(String s, Set<String> dict) {
+        ArrayList<String> result = new ArrayList<String>();
+        if (s == null || s.isEmpty() || dict.isEmpty()) 
             return result;
-        }
          
-        List<String> curr = new ArrayList<String>();
-        wordBreakHelper(0, s, dict, curr, result);
+        wordBreakHelper(s, dict, "", result);
          
         return result;
     }
      
-    private void wordBreakHelper(int start, String s, Set<String> dict, List<String> curr, List<String> result) {
-        if (start >= s.length()) {
-            String temp = constructString(curr);
-            result.add(temp);
+    private void wordBreakHelper(String s, Set<String> dict, String item, ArrayList<String> result) {
+        if (!isBreakable(s, dict)) return;
+         
+        if (s.isEmpty()) {
+            result.add(item);
+            return;
         }
          
-        for (int i = start; i < s.length(); i++) {
-            if (dict.contains(s.substring(start, i + 1))) {
-                curr.add(s.substring(start, i + 1));
-                wordBreakHelper(i + 1, s, dict, curr, result);
-                curr.remove(curr.size() - 1);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            sb.append(s.charAt(i));
+            if (dict.contains(sb.toString())) {
+                String newItem = item.length() > 0 ? item + " " + sb.toString() : sb.toString();
+                wordBreakHelper(s.substring(i + 1), dict, newItem, result);
             }
         }
     }
      
-    private String constructString(List<String> tokens) {
-        StringBuilder sb = new StringBuilder();
+    private boolean isBreakable(String s, Set<String> dict) {
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
          
-        for (int i = 0; i < tokens.size() - 1; i++) {
-            sb.append(tokens.get(i) + " ");
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] == true && dict.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
         }
          
-        sb.append(tokens.get(tokens.size() - 1));
-         
-        return sb.toString();
+        return dp[s.length()];
     }
 }
