@@ -9,7 +9,7 @@
  result[i] = before[i] * after[i]
 
  Time - O(n)
- Space - O(1)
+ Space - O(n)
 
  */
 
