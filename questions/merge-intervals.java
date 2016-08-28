@@ -70,3 +70,15 @@ public List<Meeting> mergeRanges(List<Meeting> meetings) {
     What if we did have an upper bound on the input values? Could we improve our runtime? Would it cost us memory?
     Could we do this "in-place" on the input list and save some space? What are the pros and cons of doing this in-place?
  * /
+ /*
+  * In-Place 
+  * 1) Sort all intervals in decreasing order of start time.
+    2) Traverse sorted intervals starting from first interval, 
+      do following for every interval.
+        a) If current interval is not first interval and it 
+          overlaps with previous interval, then merge it with
+          previous interval. Keep doing it while the interval
+          overlaps with the previous one.         
+        b) Else add current interval to output list of intervals.
+ */
+ 
