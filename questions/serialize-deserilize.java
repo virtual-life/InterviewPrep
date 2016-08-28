@@ -38,6 +38,7 @@ public class SolutionSD {
         if (x == null) {
             sb.append("# ");
         } else {
+            // In-order traversal
             sb.append(x.val + " ");
             serialize(x.left, sb);
             serialize(x.right, sb);
