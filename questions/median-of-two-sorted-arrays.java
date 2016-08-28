@@ -31,7 +31,9 @@ public class Solution {
         }
         /** Even number of elements */
         else {
-            return (findMedianHelper(nums1, nums2, (n1 + n2) / 2) + findMedianHelper(nums1, nums2, (n1 + n2) / 2 + 1)) / 2;
+            double r1 = findMedianHelper(nums1, nums2, (n1 + n2) / 2);
+            double r2 = findMedianHelper(nums1, nums2, (n1 + n2) / 2 + 1);
+            return ( r1 + r2 ) / 2;
         }
     }
 
