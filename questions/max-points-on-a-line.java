@@ -11,7 +11,7 @@ import java.util.HashMap;
  *     Point(int a, int b) { x = a; y = b; }
  * }
  *
- *
+ * Time O(n^2) Space O(n)
  */
 public class Solution {
     public int maxPoints(Point[] points) {
@@ -23,7 +23,7 @@ public class Solution {
         HashMap<Double,Integer> map = new HashMap<Double, Integer>();
 
         for(int i = 0 ;i<points.length ;i++){
-            int duplicate = 1;
+            int duplicate = 1; // This is for a case where there is only 1 point in the plane
             int vertical = 0;
             for(int j = i+1; j<points.length;j++){
                 if(points[i].x == points[j].x){
