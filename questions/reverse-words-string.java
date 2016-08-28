@@ -33,15 +33,19 @@ class SolutionRS {
             return s;
 
         s = swap(s, 0, s.length-1);
-        int last = 0;
-        int i = 0;
-        while(i < s.length){
-            while(i < s.length && s[i] != ' '){
-                i++;
+
+        // we hold the index of the /start/ of the current word
+        // as we look for the /end/ of the current word
+        int wordStartIndex = 0;
+        for (int i = 0; i <= s.length; i++) {
+            // found the end of the current word!
+            if (i == s.length || s[i] == ' ') {
+
+                // if we haven't exhausted the string our
+                // next word's start is one character ahead
+                swap(s, wordStartIndex, i - 1);
+                wordStartIndex = i + 1;
             }
-            s = swap(s, last, i-1);
-            last = i + 1;
-            i = last;
         }
         return s;
     }
