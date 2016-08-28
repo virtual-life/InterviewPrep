@@ -24,7 +24,7 @@
  The double-ended queue is the perfect data structure for this problem. It supports insertion/deletion from the front and back.
  The trick is to find a way such that the largest element in the window would always appear in the front of the queue.
 
- Time - O(n)
+ Time - O(n) - This is because each element in the list is being inserted and then removed at most once. Therefore, the total number of insert + delete operations is 2n.
 
  */
 
