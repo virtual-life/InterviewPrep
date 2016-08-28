@@ -18,6 +18,10 @@ class SolutionRS {
 
     /**
      *  In Place
+     
+     a) Reverse all the characters in the entire message, giving us the correct word order but with each word backwards.
+     b) Reverse the characters in each individual word.
+
      * Time O(n) Space O(n)
      */
     public char[] reverseWordsInPlace(char[] s ) {
