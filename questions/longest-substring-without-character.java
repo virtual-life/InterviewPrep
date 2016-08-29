@@ -12,6 +12,10 @@
 
  O(n) - Time
  O(m) - Space
+ 
+  HashMap. The key stores the character while value stores the index. Why we need to store the index? 
+  Consider the string "abcdaef". When we encounter the second a, we need to reverse the index back starting from b. 
+  So the length of the longest substring is "bcdaef", i.e, 6.
  */
 
 public class Solution {
