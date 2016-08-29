@@ -22,6 +22,8 @@ public class Solution {
     }
 
     /** O(1) Space */
+    
+    // We  ignore the sum of the previous n-1 elements if nth element is greater than the sum
 
     public int maxSubArrayNoSpace(int[] A) {
         int newsum=A[0];
