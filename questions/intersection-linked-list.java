@@ -9,11 +9,12 @@ public class Solution {
         ListNode p1=headA, p2=headB;
         if (p1 == null || p2 == null)
             return null;
-
+        // Length of List 1
         while(p1 != null){
             len1++;
             p1 = p1.next;
         }
+        // Length of List 2
         while(p2 !=null){
             len2++;
             p2 = p2.next;
@@ -22,7 +23,7 @@ public class Solution {
         int diff = 0;
         p1=headA;
         p2=headB;
-
+        // Difference between len(list1) - len(list2)
         if(len1 > len2){
             diff = len1-len2;
             int i=0;
@@ -42,8 +43,6 @@ public class Solution {
         while(p1 != null && p2 != null){
             if(p1.val == p2.val){
                 return p1;
-            }else{
-
             }
             p1 = p1.next;
             p2 = p2.next;
