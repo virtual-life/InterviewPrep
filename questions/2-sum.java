@@ -93,6 +93,7 @@ class Solution2Sum {
         for (Integer i : elements.keySet()) {
             int target = value - i;
             if (elements.containsKey(target)) {
+                // condition when we have duplictaes eg 4+4 = 8 with target 8
                 if (i == target && elements.get(target) < 2) {
                     continue;
                 }
