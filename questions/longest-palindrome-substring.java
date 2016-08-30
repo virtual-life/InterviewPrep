@@ -27,7 +27,7 @@ public class Solution {
         }
 
         String longest = s.substring(0, 1);
-        for (int i = 0; i < s.length()-1 ; i++) {
+        for (int i = 0; i < s.length() ; i++) {
             // get longest palindrome with center of i
             //for odd length
             String tmp = helper(s, i, i);
@@ -53,7 +53,7 @@ public class Solution {
             begin--;
             end++;
         }
-        return s.substring(begin+1, end-1);
+        return s.substring(begin+1, end);
     }
 
 }
