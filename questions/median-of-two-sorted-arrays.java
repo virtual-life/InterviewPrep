@@ -13,6 +13,8 @@ import java.util.Arrays;
  So it is naturally to think about the binary search.
  http://buttercola.blogspot.com/2014/09/leetcode-median-of-two-sorted-arrays.html
  
+ http://www.drdobbs.com/parallel/finding-the-median-of-two-sorted-arrays/240169222?pgno=2
+ 
  The problem is equivalent to find the kth element in the two sorted array.
  */
 
