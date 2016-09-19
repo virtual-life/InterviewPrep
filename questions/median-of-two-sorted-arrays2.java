@@ -39,7 +39,8 @@ public class Solution {
         
          /**
          *
-         For G to be the overall median (M), it must be less than or equal to 4 elements, within the overall sorted array C.Two of these 4 elements come from array A, which implies that the rest of the elements (two more) must come from array B. 
+         For G to be the overall median (M), it must be less than or equal to 4 elements, within the overall sorted array C.
+         Two of these 4 elements come from array A, which implies that the rest of the elements (two more) must come from array B. 
          *
          */
         // aMid = aLen / 2 and k = （aLen + bLen)/2, so aMid = aLen * k/(aLen + bLen)
