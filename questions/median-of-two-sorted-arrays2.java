@@ -25,7 +25,7 @@ public class Solution {
 	int bLen = bEnd - bStart + 1;
 	
 
-	
+	// return kth element
         if (aLen == 0) {
             return B[bStart + k];
         }
@@ -33,6 +33,8 @@ public class Solution {
         if (bLen == 0) {
             return A[aStart + k];
         }
+        
+        
         if (k == 0) {
             return Math.min(A[aStart], B[bStart]);
         }
@@ -46,11 +48,11 @@ public class Solution {
         // aMid = aLen / 2 and k = （aLen + bLen)/2, so aMid = aLen * k/(aLen + bLen)
         int aMid = aLen * k / (aLen + bLen); // a's middle count
 
-	    int bMid = k - aMid - 1; // b's middle count
+	int bMid = k - aMid - 1; // b's middle count
  
-	    // make aMid and bMid to be array index
-	    aMid = aMid + aStart;
-	    bMid = bMid + bStart;
+	// make aMid and bMid to be array index
+	aMid = aMid + aStart;
+	bMid = bMid + bStart;
  
          /**
          *
