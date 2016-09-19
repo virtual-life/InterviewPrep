@@ -22,9 +22,9 @@ public class Solution {
     private double findMedianHelper(int[] A, int[] B, int k, int aStart, int aEnd, int bStart, int  bEnd) {
         
         int aLen = aEnd - aStart + 1;
-	    int bLen = bEnd - bStart + 1;
+	int bLen = bEnd - bStart + 1;
 	
-	    System.out.println(k);
+
 	
         if (aLen == 0) {
             return B[bStart + k];
