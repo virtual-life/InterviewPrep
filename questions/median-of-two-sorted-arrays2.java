@@ -4,17 +4,17 @@ public class Solution {
             return 0.f;
         }
 
-        int n1 = nums1.length;
-        int n2 = nums2.length;
+        int m = nums1.length;
+        int n = nums2.length;
 
         /** Odd number of elements */
-        if ((n1 + n2) % 2 == 1) {
-            return findMedianHelper(nums1, nums2, (n1 + n2) / 2 + 1, 0, n1-1, 0, n2-1);
+        if ((m + n) % 2 == 1) {
+            return findMedianHelper(nums1, nums2, (m + n) / 2 , 0, m-1, 0, n-1);
         }
         /** Even number of elements */
         else {
-            double r1 = findMedianHelper(nums1, nums2, (n1 + n2) / 2, 0, n1-1, 0, n2-1);
-            double r2 = findMedianHelper(nums1, nums2, (n1 + n2) / 2 + 1, 0, n1-1, 0, n2-1);
+            double r1 = findMedianHelper(nums1, nums2, (m + n) / 2, 0, m-1, 0, n-1);
+            double r2 = findMedianHelper(nums1, nums2, (m + n) / 2 - 1, 0, m-1, 0, n-1);
             return ( r1 + r2 ) / 2;
         }
     }
@@ -24,17 +24,17 @@ public class Solution {
         int aLen = aEnd - aStart + 1;
 	    int bLen = bEnd - bStart + 1;
 	
+	    System.out.println(k);
 	
         if (aLen == 0) {
-            return B[k - 1];
+            return B[bStart + k];
         }
 
         if (bLen == 0) {
-            return A[k - 1];
+            return A[aStart + k];
         }
-
-        if (k == 1) {
-            return Math.min(A[0], B[0]);
+        if (k == 0) {
+            return Math.min(A[aStart], B[bStart]);
         }
         
          /**
