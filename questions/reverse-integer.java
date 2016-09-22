@@ -17,7 +17,7 @@
 
 public class Solution {
     public int reverse(int x) {
-        if (x < 10 && x > -10)
+        if (x < 10 && x > -10) // if its a single digit
             return x;
         long result = 0;
         boolean neg = false;
