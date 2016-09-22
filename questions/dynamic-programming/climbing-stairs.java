@@ -10,6 +10,15 @@
  So dp[i] = dp[i - 1] + dp[i - 2].
 
  */
+ 
+ /**
+The person can reach n’th stair from either (n-1)’th stair or from (n-2)’th stair. Let the total number of ways to reach n’t stair be ‘ways(n)’. The value of ‘ways(n)’ can be written as following.
+    ways(n) = ways(n-1) + ways(n-2)
+The above expression is actually the expression for Fibonacci numbers, but there is one thing to notice, the value of ways(n) is equal to fibonacci(n+1).
+ways(1) = fib(2) = 1
+ways(2) = fib(3) = 2
+ways(3) = fib(4) = 3
+*/
 
 public class Solution {
     public int climbStairs(int n) {
@@ -34,8 +43,8 @@ public class Solution {
         }
 
         int dp_i = 1;
-        int dp1 = 1;
-        int dp2 = 1;
+        int dp1 = 1;  // ways(0) - number of ways of reaching 0 step 
+        int dp2 = 1;  // ways(1) - number of ways of reaching 1 step 
 
         for (int i = 2; i <= n; i++) {
             dp_i = dp1 + dp2;
