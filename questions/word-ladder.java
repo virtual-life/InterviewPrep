@@ -120,6 +120,7 @@ public class Solution {
             String word = top.word;
             int currNumSteps = top.numSteps;
 
+            // if its the endWord 
             if(word.equals(endWord)){
                 if(minStep == 0){
                     minStep = top.numSteps;
@@ -130,6 +131,7 @@ public class Solution {
                     ArrayList<String> temp = new ArrayList<String>();
                     temp.add(top.word);
                     while(top.pre !=null){
+                        // add to begining of the list 
                         temp.add(0, top.pre.word);
                         top = top.pre;
                     }
