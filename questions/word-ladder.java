@@ -69,7 +69,13 @@ public class Solution {
         return 0;
     }
 
-    /** Print the ladder */
+    /** Print the ladder 
+ 
+    [
+        ["hit","hot","dot","dog","cog"],
+        ["hit","hot","lot","log","cog"]
+    ]
+    */
     /**
      To track the actual ladder, we need to add a pointer that points to the previous node in the WordNode class
      In addition, the used word can not directly removed from the dictionary. The used word is only removed when steps change.
