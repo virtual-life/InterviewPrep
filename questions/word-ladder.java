@@ -34,7 +34,7 @@ class WordNode{
 
 public class Solution {
     public int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
-        LinkedList<WordNode> queue = new LinkedList<WordNode>();
+        Queue<WordNode> queue = new LinkedList<WordNode>();
         queue.add(new WordNode(beginWord, 1));
 
         wordDict.add(endWord);
@@ -101,7 +101,7 @@ public class Solution {
 
         List<List<String>> result = new ArrayList<List<String>>();
 
-        LinkedList<WordNode> queue = new LinkedList<WordNode>();
+        Queue<WordNode> queue = new LinkedList<WordNode>();
         queue.add(new WordNodeLadder(beginWord, 1, null));
 
         wordDict.add(endWord);
