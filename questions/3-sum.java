@@ -29,8 +29,8 @@ public class Solution {
         Arrays.sort(num);
 
         for (int i = 0; i < length - 2; i++) {
-            if (num[i] > 0) break;
-            if (i == 0 || num[i] > num[i - 1]) {
+   
+            if (i == 0 || num[i] > num[i - 1]) { // 2nd condition is to handle duplicate elements
                 int target = 0 - num[i];
                 int start = i + 1;
                 int end = length - 1;
