@@ -1,3 +1,8 @@
+/**
+ Time - O(n)
+ Space 
+*/
+
 public class Solution {
     static HashMap<Character,Character> brackets = new HashMap<Character, Character>();
     static {
