@@ -1,3 +1,10 @@
+/**
+The LRU cache is a hash table of keys and double linked nodes. 
+The hash table makes the time of get() to be O(1). 
+The list of double linked nodes make the nodes adding/removal operations O(1).
+
+*/
+
 import java.util.HashMap;
 
 class Node{
