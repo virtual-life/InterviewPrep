@@ -33,7 +33,7 @@ public class Solution {
             if (!set.contains(s.charAt(end))) {
                 set.add(s.charAt(end));
             } else {
-                len = Math.max(len, end - start);
+                maxlen = Math.max(maxlen, end - start);
 
                 // move the start pointer
                 while (start < end) {
@@ -48,7 +48,7 @@ public class Solution {
                 start++;
             }
         }
-        len = Math.max(len, end - start);
-        return len;
+        maxlen = Math.max(maxlen, end - start);
+        return maxlen;
     }
 }
