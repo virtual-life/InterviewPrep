@@ -1,7 +1,7 @@
 /*
 
 
-Time -   O(n log log n)
+Time -   O(n log n)
 Space - O(n) memory
  */
 
