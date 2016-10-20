@@ -17,11 +17,11 @@ public class Solution {
 
         if(root == null)
             return null;
-        if(root == p || root == q)
-            return root;
+//         if(root == p || root == q)
+//             return root;
 
-        if(root.val > p.val && root.val < q.val)
-            return root;
+//         if(root.val > p.val && root.val < q.val)
+//             return root;
             //Search left subtree
         else if(root.val > p.val && root.val > q.val)
             return lowestCommonAncestorBST(root.left,p,q);
@@ -29,6 +29,6 @@ public class Solution {
         else if(root.val < p.val && root.val < q.val)
             return lowestCommonAncestorBST(root.right,p,q);
 
-
+        return root;
     }
 }
