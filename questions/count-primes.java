@@ -1,5 +1,5 @@
 /*
-
+Count the number of prime numbers less than a non-negative number, n.
 
 Time -   O(n log n)
 Space - O(n) memory
