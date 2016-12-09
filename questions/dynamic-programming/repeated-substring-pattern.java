@@ -11,7 +11,10 @@ Example 3:
 Input: "abcabcabcabc"
 Output: True
 Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
-Time - O(
+
+
+Time -  makes use of the information gained by previous symbol comparisons. It never re-compares a text symbol that has matched a pattern symbol. 
+As a result, the complexity of the searching phase of the Knuth-Morris-Pratt algorithm is in O(n).
 */
 
 /**
