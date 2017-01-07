@@ -57,3 +57,12 @@ public Rectangle findRectangularOverlap(Rectangle rect1, Rectangle rect2) {
         yOverlap.length
     );
 }
+
+/*
+Bonus
+What if we had an array of rectangles and wanted to find all the rectangular overlaps between all possible pairs of two rectangles within the array? 
+Note that we'd be returning an array of rectangles.
+
+What if we had an array of rectangles and wanted to find the overlap between all of them, 
+if there was one? Note that we'd be returning a single rectangle.
+*/
