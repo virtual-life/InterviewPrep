@@ -70,9 +70,4 @@ public class Solution {
     }
 }
 
-/*
-Bonus
-What if we wanted the highest product of 4 items?
-What if we wanted the highest product of k items?  
-If our highest product is really big, it could overflow ↴ . How should we protect against this? - BigInteger or Long 
-*/
+
