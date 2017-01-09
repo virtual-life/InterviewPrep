@@ -37,9 +37,8 @@ public class Solution {
 
                 // move the start pointer
                 while (start < end) {
-                    if (s.charAt(start) != s.charAt(end)) {
-                        set.remove(s.charAt(start));
-                    } else {
+                    set.remove(s.charAt(start));                
+                    if (s.charAt(start) == s.charAt(end)) {
                         break;
                     }
                     start++;
