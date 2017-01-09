@@ -75,7 +75,7 @@ public class Solution {
         dfs(board, visited, str, i, j+1, trie);
         visited[i][j]=false;
     }
-    
+}    
     
 //Trie Node
 class TrieNode{
@@ -122,4 +122,4 @@ class Trie{
         return true;
     }
 }
-}
+
