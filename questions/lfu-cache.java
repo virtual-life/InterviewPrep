@@ -81,7 +81,6 @@ public class LFUCache {
         if(map.containsKey(key)){
             CacheNode currentNode = map.get(key);
             currentNode.value = value;
-            addFrequency(currentNode);
         }else{
             if(map.size() == maxCacheSize){
                 doEviction();
@@ -94,20 +93,17 @@ public class LFUCache {
             lowestFrequency = 0;
             LinkedHashSet<CacheNode> nodes = frequncyList[0];
             nodes.add(currentNode);
-            
-            addFrequency(currentNode);
         }    
     }
 
     public int get(int key) {
-        // Write your code here
-        CacheNode currentNode = cache.get(key);
-        if (currentNode != null) {
+        
+        if(map.containsKey(key)){
             addFrequency(currentNode);
-            return currentNode.v;
-        } else {
+            return currentNode.value;
+        }else{
             return -1;
-        }
+        }    
     }
 
     public void addFrequency(CacheNode currentNode) {
@@ -117,7 +113,7 @@ public class LFUCache {
             LinkedHashSet<CacheNode> currentNodes = frequencyList[currentFrequency];
             LinkedHashSet<CacheNode> newNodes = frequencyList[nextFrequency];
             moveToNextFrequency(currentNode, nextFrequency, currentNodes, newNodes);
-            cache.put(currentNode.k, currentNode);
+            map.put(currentNode.key, currentNode);
             if (lowestFrequency == currentFrequency && currentNodes.isEmpty()) {
                 lowestFrequency = nextFrequency;
             }
@@ -130,14 +126,14 @@ public class LFUCache {
     }
 
     public int remove(int key) {
-        CacheNode currentNode = cache.remove(key);
+        CacheNode currentNode = map.remove(key);
         if (currentNode != null) {
             LinkedHashSet<CacheNode> nodes = frequencyList[currentNode.frequency];
             nodes.remove(currentNode);
             if (lowestFrequency == currentNode.frequency) {
                 findNextLowestFrequency();
             }
-            return currentNode.v;
+            return currentNode.value;
         } else {
             return -1;
         }
