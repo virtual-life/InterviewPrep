@@ -79,6 +79,7 @@ public class LFUCache {
         if(map.containsKey(key)){
             CacheNode currentNode = map.get(key);
             currentNode.value = value;
+            addFrequency();
         }else{
             if(map.size() == maxCacheSize){
                 doEviction();
