@@ -56,7 +56,7 @@ import java.util.Map;
 
 public class LFUCache {
 
-    private final Map<Integer, CacheNode> cache;
+    private final Map<Integer, CacheNode> map;
     private final LinkedHashSet[] frequencyList;
     private int lowestFrequency;
     private int maxFrequency;
@@ -65,7 +65,7 @@ public class LFUCache {
     // @param capacity, an integer
     public LFUCache(int capacity) {
         // Write your code here
-        this.cache = new HashMap<Integer, CacheNode>(capacity);
+        this.map = new HashMap<Integer, CacheNode>(capacity);
         this.frequencyList = new LinkedHashSet[capacity * 2];
         this.lowestFrequency = 0;
         this.maxFrequency = capacity * 2 - 1;
@@ -212,13 +212,13 @@ public class LFUCache {
     }
 
     private class CacheNode {
-        public final int k;
-        public int v;
+        public final int key;
+        public int value;
         public int frequency;
 
-        public CacheNode(int k, int v, int frequency) {
-            this.k = k;
-            this.v = v;
+        public CacheNode(int key, int value int frequency) {
+            this.key = key;
+            this.value = value;
             this.frequency = frequency;
         }
 
