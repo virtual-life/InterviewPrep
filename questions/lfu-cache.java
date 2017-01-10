@@ -156,7 +156,7 @@ public class LFUCache {
                 while (it.hasNext() && currentlyDeleted++ < target) {
                     CacheNode node = it.next();
                     it.remove();
-                    cache.remove(node.key);
+                    map.remove(node.key);
                 }
                 if (!it.hasNext()) {
                     findNextLowestFrequency();
