@@ -62,22 +62,20 @@ public class LFUCache {
     private int maxFrequency;
     private final int maxCacheSize;
 
-    // @param capacity, an integer
+
     public LFUCache(int capacity) {
-        // Write your code here
+
         this.map = new HashMap<Integer, CacheNode>(capacity);
-        this.frequencyList = new LinkedHashSet[capacity * 2];
+        this.frequencyList = new LinkedHashSet[capacity];
         this.lowestFrequency = 0;
         this.maxFrequency = capacity - 1;
         this.maxCacheSize = capacity;
         initFrequencyList();
     }
 
-    // @param key, an integer
-    // @param value, an integer
-    // @return nothing
+
     public void put(int key, int value) {
-        // Write your code here       
+      
         if(map.containsKey(key)){
             CacheNode currentNode = map.get(key);
             currentNode.value = value;
@@ -139,35 +137,6 @@ public class LFUCache {
         }
     }
 
-    public int frequencyOf(int key) {
-        CacheNode node = cache.get(key);
-        if (node != null) {
-            return node.frequency + 1;
-        } else {
-            return 0;
-        }
-    }
-
-    public void clear() {
-        for (int i = 0; i <= maxFrequency; i++) {
-            frequencyList[i].clear();
-        }
-        cache.clear();
-        lowestFrequency = 0;
-    }
-
-    public int size() {
-        return cache.size();
-    }
-
-    public boolean isEmpty() {
-        return this.cache.isEmpty();
-    }
-
-    public boolean containsKey(int key) {
-        return this.cache.containsKey(key);
-    }
-
     private void initFrequencyList() {
         for (int i = 0; i <= maxFrequency; i++) {
             frequencyList[i] = new LinkedHashSet<CacheNode>();
@@ -186,7 +155,7 @@ public class LFUCache {
                 while (it.hasNext() && currentlyDeleted++ < target) {
                     CacheNode node = it.next();
                     it.remove();
-                    cache.remove(node.k);
+                    cache.remove(node.key);
                 }
                 if (!it.hasNext()) {
                     findNextLowestFrequency();
