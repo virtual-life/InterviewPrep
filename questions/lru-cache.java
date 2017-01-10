@@ -73,13 +73,13 @@ public class LRUCache {
         if(n.pre!=null){
             n.pre.next = n.next;
         }else{
-            head = n.next;
+            head = n.next; // If n is the head node 
         }
 
         if(n.next!=null){
             n.next.pre = n.pre;
         }else{
-            tail = n.pre;
+            tail = n.pre;  // If n is the tail node 
         }
 
     }
