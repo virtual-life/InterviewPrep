@@ -68,7 +68,7 @@ public class LFUCache {
         this.map = new HashMap<Integer, CacheNode>(capacity);
         this.frequencyList = new LinkedHashSet[capacity * 2];
         this.lowestFrequency = 0;
-        this.maxFrequency = capacity * 2 - 1;
+        this.maxFrequency = capacity - 1;
         this.maxCacheSize = capacity;
         initFrequencyList();
     }
@@ -76,22 +76,27 @@ public class LFUCache {
     // @param key, an integer
     // @param value, an integer
     // @return nothing
-    public void set(int key, int value) {
-        // Write your code here
-        CacheNode currentNode = cache.get(key);
-        if (currentNode == null) {
-            if (cache.size() == maxCacheSize) {
+    public void put(int key, int value) {
+        // Write your code here       
+        if(map.containsKey(key)){
+            CacheNode currentNode = map.get(key);
+            currentNode.value = value;
+            addFrequency(currentNode);
+        }else{
+            if(map.size() == maxCacheSize){
                 doEviction();
             }
-            LinkedHashSet<CacheNode> nodes = frequencyList[0];
-            currentNode = new CacheNode(key, value, 0);
-            nodes.add(currentNode);
-            cache.put(key, currentNode);
+            // Create New node
+            CacheNode currentNode = new CacheNode(key, value, 0);
+            // Add to map 
+            map.put(key,currentNode);
+            // Add to frequency list 
             lowestFrequency = 0;
-        } else {
-            currentNode.v = value;
-        }
-        addFrequency(currentNode);
+            LinkedHashSet<CacheNode> nodes = frequncyList[0];
+            nodes.add(currentNode);
+            
+            addFrequency(currentNode);
+        }    
     }
 
     public int get(int key) {
