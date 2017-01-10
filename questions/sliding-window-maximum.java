@@ -50,7 +50,7 @@ public class Solution {
                 deque.removeFirst();
             }
 
-            // Add into the result
+            // Add into the result once you have iterated atleast 3 elements 
             if (i + 1 >= k) {
                 result[i + 1 - k] = nums[deque.getFirst()];
             }
