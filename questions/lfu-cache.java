@@ -42,6 +42,11 @@ In our article it is based on array as traversing would be faster than linked li
 /**
 Reference - https://github.com/chirino/hawtdb/blob/master/hawtdb/src/main/java/org/fusesource/hawtdb/util/LFUCache.java
 */
+    
+/*
+Frequency list is stored as an array with no next/prev pointers between nodes: looping over the array should be faster and more CPU-cache friendly than
+using an ad-hoc linked-pointers structure.
+*/
 
 import java.util.HashMap;
 import java.util.Iterator;
