@@ -42,7 +42,7 @@ public boolean exist(char[][] board, String word) {
  
 public boolean dfs(char[][] board, String word, int i, int j, int k, boolean[][] visited){
 
-    if(k==word.length()-1){
+    if(k==word.length()){
             return true;
     } 
                 
