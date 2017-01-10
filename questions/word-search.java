@@ -58,16 +58,16 @@ public boolean dfs(char[][] board, String word, int i, int j, int k, boolean[][]
       return false;
     }
  
-    visited[row][col] = true;
+    visited[i][j] = true;
     
-    if(dfs(board, word, i-1, j, k+1)
-        ||dfs(board, word, i+1, j, k+1)
-        ||dfs(board, word, i, j-1, k+1)
-        ||dfs(board, word, i, j+1, k+1)){
+    if(   dfs(board, word, i-1, j, k+1, visited)
+        ||dfs(board, word, i+1, j, k+1, visited)
+        ||dfs(board, word, i, j-1, k+1, visited)
+        ||dfs(board, word, i, j+1, k+1, visited)){
             return true;
      }
      
-        visited[row][col] = true;
+        visited[i][j]=false;;
     }
  
     return false;
