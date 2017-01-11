@@ -39,12 +39,18 @@ public class Solution {
         char [] s = str.toCharArray();
         while( i<n ) {
             if( s[i] == s[j] ) {
-                dp[++i]=++j;
-            }
-            else if( j == 0 ) 
+                j++;
+                dp[i]=j;
                 i++;
-            else 
-                j = dp[j];
+            }
+            else {
+                if( j == 0 ){
+                    dp[i] = 0;
+                    i++; 
+                }    
+                else 
+                    j = dp[j];
+            }
         }
         return (dp[n] >0  && dp[n]%(n-dp[n])==0);
     }
