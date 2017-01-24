@@ -33,19 +33,19 @@ public class Solution {
 
         int i = 0;
         for (i = 0; i < pattern.length(); i++) {
-            char digit = pattern.charAt(i);
+            char ch = pattern.charAt(i);
 
             String token = tokens[i];
 
             // Check the one-one mapping
-            if (!map.containsKey(digit) && !inverseMap.containsKey(token)) {
-                map.put(digit, token);
-                inverseMap.put(token, digit);
-            } else if (map.containsKey(digit) && inverseMap.containsKey(token)) {
-                String token1 = map.get(digit);
-                char digit1 = inverseMap.get(token);
+            if (!map.containsKey(ch) && !inverseMap.containsKey(token)) {
+                map.put(ch, token);
+                inverseMap.put(token, ch);
+            } else if (map.containsKey(ch) && inverseMap.containsKey(token)) {
+                String token1 = map.get(ch);
+                char ch1 = inverseMap.get(token);
 
-                if (!token1.equals(token) || digit != digit1) {
+                if (!token1.equals(token) || ch != ch1) {
                     return false;
                 }
             } else {
