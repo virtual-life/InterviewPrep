@@ -14,13 +14,11 @@ public class RandomizedSet {
  
     HashMap<Integer, Integer> map1;
     HashMap<Integer, Integer> map2;
-    Random rand;
  
     /** Initialize your data structure here. */
     public RandomizedSet() {
         map1  = new HashMap<Integer, Integer>();
         map2  = new HashMap<Integer, Integer>();
-        rand = new Random(System.currentTimeMillis());
     }
  
     /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
@@ -35,19 +33,19 @@ public class RandomizedSet {
     }
  
     /** Removes a value from the set. Returns true if the set contained the specified element. */
-    public boolean remove(int val) {
-        if(map1.containsKey(val)){
-            int index = map1.get(val);
+    public boolean remove(int key) {
+        if(map1.containsKey(key)){
+            int index = map1.get(key);
  
             //remove the entry from both maps
-            map1.remove(val);
+            map1.remove(key);
             map2.remove(index);
  
             if(map1.size()==0){
                 return true;
             }
  
-            //if last is deleted, do nothing 
+            //if the key is the last element added 
             if(index==map1.size()){
                 return true;
             }    
@@ -77,12 +75,80 @@ public class RandomizedSet {
         }    
  
         return map2.get(new Random().nextInt(map1.size()));
-        //return 0;
     }
 }
 
 
 /**
 With duplicates 
+For example, after insert(1), insert(1), insert(2), getRandom() should have 2/3 chance return 1 and 1/3 chance return 2.
+Then, remove(1), 1 and 2 should have an equal chance of being selected by getRandom().
 */
+
+public class RandomizedSet {
+ 
+    ArrayList<Integer> nums;
+    HashMap<Integer, Set<Integer>> map;
+
+ 
+    /** Initialize your data structure here. */
+    public RandomizedSet() {
+         nums = new ArrayList<Integer>();
+         map = new HashMap<Integer, Set<Integer>>();
+    }
+ 
+    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+    public boolean insert(int val) {
+     
+        if(map.containsKey(val)){
+           map.put(val, map.get(val).add(nums.size());
+           return false;        
+        }else{
+            map.put(val, new HashSet<Integer>(Arrays.asList(nums.size())));
+        } 
+        
+        nums.add(val);           
+        return true;
+    }
+ 
+    /** Removes a value from the set. Returns true if the set contained the specified element. */
+    public boolean remove(int key) {
+        if(map.containsKey(key)){
+           int index = map.get(key).iterator().next();
+            
+            //update the last element's index   
+            if(index < nums.size()){
+               int lastElement = nums.get(nums.size() -1);
+               nums.set(index , lastElement );
+               map.get(lastElement).remove(nums.size() - 1);
+               map.get(lastElement).add(index);
+            } 
+      
+           nums.remove(nums.size() - 1);
+           map.get(key).remove(index);
+           if (map.get(key).isEmpty()){            
+              map.remove(key);
+           }
+            return true;
+ 
+        }else{
+            return false;
+        }
+ 
+        return true;
+    }
+ 
+    /** Get a random element from the set. */
+    public int getRandom() {
+        if(map.size()==0){
+            return -1; 
+        }
+ 
+        if(map.size()==1){
+            return nums.gets(0);    
+        }    
+        
+        return nums.get(new Random().nextInt(nums.size()));
+    }
+}
 
