@@ -13,6 +13,10 @@
 
  */
 
+/*
+check each row, and then each column, and each block( 3*3 grid ) , respectively. Use hash set to store the visited numbers.
+*/
+
 public class Solution {
     public boolean isValidSudoku(char[][] board) {
         if (board == null || board.length != 9 || board[0].length != 9) {
