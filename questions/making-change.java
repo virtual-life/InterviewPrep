@@ -20,6 +20,8 @@ Space - O(n)
 
 */
 
+// waysOfDoingNCents, where the index is the amount and the value at each index is the number of ways of getting that amount.
+
   public int changePossibilitiesBottomUp(int amount, int[] denominations) {
     int[] waysOfDoingNCents = new int[amount+1]; // array of zeros from 0..amount
     waysOfDoingNCents[0] = 1;
