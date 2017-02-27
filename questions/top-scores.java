@@ -53,6 +53,6 @@ public int[] sortScores(int[] unorderedScores, int highestPossibleScore) {
 /*
 Bonus:
 We chose to generate and return a separate, sorted array. 
-Could we instead sort the array in place? 
+Could we instead sort the array in place?  - In-place quick sort or radix sort ?
 Does this change the time complexity? The space complexity?
 */
