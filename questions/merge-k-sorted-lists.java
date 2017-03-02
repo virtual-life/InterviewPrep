@@ -1,6 +1,6 @@
 /**
  Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
- Time - log(k) * n
+ Time - O( log(k) * n )
  k is number of list and n is number of total elements.
  */
 
