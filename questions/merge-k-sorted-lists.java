@@ -11,12 +11,16 @@ public class Solution {
             return null;
 
         PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, new ListNodeComparator());
-
+        
+       // add list heads to the heap
         for(ListNode l : lists){
             if (l != null)
                 queue.add(l);
         }
+     
         ListNode head = new ListNode(0);
+     
+     
         ListNode p = head;
         while(!queue.isEmpty()){
             ListNode n = queue.poll();
@@ -55,10 +59,11 @@ public class Solution{
       if (arrays == null || arrays.length == 0) {
           throw new IllegalArgumentException("Invalid input!");
       }     
-      // priority queue is heap in Java
+      
       PriorityQueue<HeapItem> pq = new PriorityQueue<HeapItem>();             
-      // add arrays to the heap
       int total=0;
+      
+      // add arrays to the heap
       for (int i = 0; i < arrays.length; i++) {
           pq.add(new HeapItem(arrays[i], 0));
           total = total + arr[i].length;
