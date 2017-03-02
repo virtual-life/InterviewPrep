@@ -44,3 +44,58 @@ class ListNodeComparator implements Comparator<ListNode>{
         }
     }
 }
+
+
+// For Arrays 
+
+
+public class Solution{    
+
+ public static List<Integer> mergeKArrays(int[][] arrays) {
+      if (arrays == null || arrays.length == 0) {
+          throw new IllegalArgumentException("Invalid input!");
+      }     
+      // priority queue is heap in Java
+      PriorityQueue<HeapItem> pq = new PriorityQueue<HeapItem>();             
+      // add arrays to the heap
+      int total=0;
+      for (int i = 0; i < arrays.length; i++) {
+          pq.add(new HeapItem(arrays[i], 0));
+          total = total + arr[i].length;
+      }
+  
+      List<Integer> result = new ArrayList<Integer> (total);  
+  
+      while (!pq.isEmpty()) {             
+          HeapItem current = pq.remove();
+          result.add(current.array[current.index]);                       
+          if (current.index < current.array.length-1) {  
+             current.index++;
+             pq.add(current);  
+          }
+     }
+     return result;
+ }
+ 
+  public static class HeapItem implements Comparable<HeapItem>{               
+      int[] array;                
+      int index;        // the index of current element               
+      public HeapItem(int[] arr, int index) {
+           this.array = arr;
+           this.index = index;
+      }  
+  
+      @Override
+      public int compareTo(HeapItem h){
+          if(this.array[this.index] > h.array[h.index]){
+              return 1;
+          }else if(this.array[this.index] < h.array[h.index]){
+              return -1;
+          }else{
+              return 0;
+          }
+      }
+ }
+ 
+}
+
