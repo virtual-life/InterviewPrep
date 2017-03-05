@@ -51,7 +51,9 @@ public int findRotationPoint(String[] words) {
 
         // if floor and ceiling have converged
         if (low + 1 == high) {
-             if( words[high].compareTo(words[low] > 9){
+        
+             // if array is NOT rotated
+             if( words[high].compareTo(words[low] >= 0){
                     return 0;
              }
                 
