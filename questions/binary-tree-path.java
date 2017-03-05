@@ -22,6 +22,7 @@ public class Solution {
         return printPaths(root,new ArrayList<>(),"");
     }
 
+    // pre-order traversal
     public List<String> printPaths(TreeNode node, List<String> path, String lpath){
         if(node==null){
             return path;
