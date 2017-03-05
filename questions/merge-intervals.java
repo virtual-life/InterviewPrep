@@ -73,6 +73,11 @@ public List<Meeting> mergeRanges(List<Meeting> meetings) {
  /*
   * In-Place 
   * 1) Sort all intervals in decreasing order of start time.
+  
+    Collections.sort(list ,Collections.reverseOrder());
+    //for an array
+    Arrays.sort(array, Collections.reverseOrder());
+    
     2) Traverse sorted intervals starting from first interval, 
       do following for every interval.
         a) If current interval is not first interval and it 
