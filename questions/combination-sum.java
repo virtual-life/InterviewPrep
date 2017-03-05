@@ -8,6 +8,7 @@ All numbers (including target) will be positive integers.
 The solution set must not contain duplicate combinations.
 For example, given candidate set [2, 3, 6, 7] and target 7, 
 A solution set is: 
+[2, 2, 3]
 
 Time - O((n+k)!) where n is the size of candidates, 
       and k is the max repeated times for each candidates
@@ -31,10 +32,52 @@ public class Solution {
             result.add(new ArrayList<Integer>(list));
             return;
         }
-        for (int i = cur; i < candidates.length && candidates[i] <= target; i++) {
-            list.add(candidates[i]);
-            helper(candidates, result, list, i, target - candidates[i]);
-            list.remove(list.size() - 1);
+        
+        int prev=-1;
+        for (int i = cur; i < candidates.length; i++) {
+              
+            if(candidates[i] <= target && prev!=candidates[i]){     
+                list.add(candidates[i]);
+                helper(candidates, result, list, i, target - candidates[i]);
+                list.remove(list.size() - 1);
+                prev=candidates[i];  
+            }                  
         }
     }
 }
+
+// Extenstion : Each number can be used ONLY ONCE
+// check the prev condition 
+
+
+public class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (candidates == null || candidates.length == 0) {
+            return result;
+        }
+        Arrays.sort(candidates);
+        helper(candidates, result, new ArrayList<Integer>(), 0, target);
+        return result;        
+    }
+    
+    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> list, int cur, int target) {
+        if (target == 0) {
+            result.add(new ArrayList<Integer>(list));
+            return;
+        }
+        
+        int prev=-1;
+        for (int i = cur; i < candidates.length; i++) {
+              
+            if(candidates[i] <= target && prev!=candidates[i]){     
+                list.add(candidates[i]);
+                helper(candidates, result, list, i, target - candidates[i]);
+                list.remove(list.size() - 1);
+                prev=candidates[i];  
+            }                  
+        }
+    }
+}
+
+
