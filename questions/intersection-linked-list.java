@@ -41,7 +41,7 @@ public class Solution {
         }
 
         while(p1 != null && p2 != null){
-            if(p1.val == p2.val){
+            if(p1 == p2){
                 return p1;
             }
             p1 = p1.next;
