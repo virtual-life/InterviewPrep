@@ -46,7 +46,7 @@ public int findRotationPoint(String[] words) {
             low = mid;
         } else {
             // go left
-            high = mid-1;
+            high = mid;
         }
 
         // if floor and ceiling have converged
