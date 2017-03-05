@@ -42,11 +42,18 @@ public class Solution {
       // Go over the string
       while (end < s.length()) {
         // If the char at start appeared in p, we increase count
-        if (end - start == p.length() && chars[s.charAt(start++)-'a']++ >= 0)
+        if (end - start == p.length() && chars[s.charAt(start)-'a']++ >= 0){
+            //chars[s.charAt(start)-'a']++;
+            start++;
             count++;
+        }    
+            
         // If the char at end appeared in p (since it's not -1 after decreasing), we decrease count
-        if (--chars[s.charAt(end++)-'a'] >= 0)
-            count--;
+        if (--chars[s.charAt(end)-'a'] >= 0){
+             end++;
+             count--;
+        }    
+           
         if (count == 0)
             result.add(start);
       }
