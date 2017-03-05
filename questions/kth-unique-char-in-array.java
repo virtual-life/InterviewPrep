@@ -53,22 +53,21 @@ public class Solution {
     }
  
     // Traverse the input string
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++){
         // Find current character and increment its
         // count
         char x = str[i];
-        ++count[x];
+        ++count[x-'a'];
  
         // If this is first occurrence, then set value
         // in index as index of it.
-        if (count[x] == 1)
-            index[x] = i;
+        if (count[x-'a'] == 1)
+            index[x-'a'] = i;
  
         // If character repeats, then remove it from
         // index[]
-        if (count[x] == 2)
-            index[x] = n;
+        if (count[x-'a'] > 1)
+            index[x-'a'] = n;
     }
  
     // Sort index[] in increasing order.  This step
