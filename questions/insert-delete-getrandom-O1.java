@@ -46,7 +46,7 @@ public class RandomizedSet {
             }
  
             //if the key is the last element added 
-            if(index==map1.size()){
+            if(index==map1.size()-1){
                 return true;
             }    
  
@@ -70,11 +70,11 @@ public class RandomizedSet {
             return -1; 
         }
  
-        if(map1.size()==1){
-            return map2.get(0);    
-        }    
- 
-        return map2.get(new Random().nextInt(map1.size()));
+//         if(map1.size()==1){
+//             return map2.get(1);    
+//         }    
+        Random rand = new Random();
+        return map2.get(rand.nextInt(map1.size())+1);
     }
 }
 
@@ -87,8 +87,8 @@ Then, remove(1), 1 and 2 should have an equal chance of being selected by getRan
 
 public class RandomizedSet {
  
-    ArrayList<Integer> nums;
-    HashMap<Integer, Set<Integer>> map;
+    ArrayList<Integer> nums; // keeps track of all numbers added so far 
+    HashMap<Integer, Set<Integer>> map; // key is the number added and value is a hashset of the position it occurs 
 
  
     /** Initialize your data structure here. */
@@ -144,11 +144,11 @@ public class RandomizedSet {
             return -1; 
         }
  
-        if(map.size()==1){
-            return nums.gets(0);    
-        }    
-        
-        return nums.get(new Random().nextInt(nums.size()));
+//         if(map.size()==1){
+//             return nums.gets(1);    
+//         }    
+        Random rand = new Random();
+        return nums.get(rand.nextInt(nums.size())+1);
     }
 }
 
