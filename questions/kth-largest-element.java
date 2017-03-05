@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  For example,
  Given [3,2,1,5,6,4] and k = 2, return 5.
 
- Time -  O(nlog(k)).
+ Time -  O(log(k)).
  Space -  O(k) for storing the top k numbers.
  */
 
@@ -48,6 +48,9 @@ Output: 1
 
 Explanation: Note that the third maximum here means the third maximum distinct number.
 Both numbers with value 2 are both considered as second maximum.
+
+Time - O(n)
+Space - O(k) 
 */
 
 public class Solution {
