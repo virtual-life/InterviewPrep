@@ -49,7 +49,7 @@ public class Solution {
 
     public static void getFactorsHelper(List<List<Integer>> factors, List<Integer> dlist, int n, int largestf){
         if(n==1){
-            ArrayList<Integer> f = new ArrayList<Integer>(dlist);
+            ArrayList<Integer> f = new ArrayList<Integer>(dlist); // Important STEP
             Collections.sort(f);
             if(f.size() >= 1){
                 factors.add(f);
