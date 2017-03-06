@@ -28,11 +28,10 @@ public class Solution {
         int num = 0;
 
         for (int i = 0; i < s.length(); i++) {
-            if (i <= s.length() - 2 &&
-                    hashMap.get(s.charAt(i)) < hashMap.get(s.charAt(i + 1))) {
-                num -= hashMap.get(s.charAt(i));
+            if (i <= s.length() - 2 &&   hashMap.get(s.charAt(i)) < hashMap.get(s.charAt(i + 1))) {
+                num = num - hashMap.get(s.charAt(i));
             } else {
-                num += hashMap.get(s.charAt(i));
+                num = num + hashMap.get(s.charAt(i));
             }
         }
         return num;
