@@ -69,12 +69,10 @@ public class Solution {
         printVO(root,vo);
         
         List<List<Integer>> ll = new ArrayList<List<Integer>>();
-        Set<Integer> i = vo.keySet();
-		for (int keys : i) {
-		    List<Integer> c = vo.get(keys);
-		    System.out.println(c);
-			ll.add(c);
-		}
+	for (int keys : vo.keySet()) {
+		List<Integer> c = vo.get(keys);
+		ll.add(c);
+	}
         return ll;
         
     }
