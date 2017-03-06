@@ -39,7 +39,7 @@ public class Solution {
             return head;
          
         ListNode dummyNode = new ListNode(0);
-        helper.next = head;
+        dummyNode.next = head;
          
         ListNode pre = dummyNode;
         ListNode cur = head;
