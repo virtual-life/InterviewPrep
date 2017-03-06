@@ -33,7 +33,7 @@ public class Solution {
 
         // Handle the circle
         while (m > 0 & n > 0) {
-            // For matrix has only 1 row
+            // For matrix has only 1 row or 1 column
             if (m == 1) {
                 for (int i = 0; i < n; i++) {
                     result.add(matrix[row][col++]);
