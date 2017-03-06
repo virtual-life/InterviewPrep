@@ -24,7 +24,7 @@ public class Solution {
         long hi = x / 2 + 1;
 
         while (lo <= hi) {
-            long mid = lo + (hi - lo) / 2;
+            long mid = (hi + lo) / 2;
             long sq = mid * mid;
             if (sq == x) {
                 return (int) mid;
