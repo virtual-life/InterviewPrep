@@ -104,13 +104,13 @@ public class Solution {
                 forwardMap.put(pChar, curr);
                 invertedMap.put(curr, pChar);
 
-                if (wordPatternMatchHelper(pStart + 1, pattern, i + 1,
-                        str, forwardMap, invertedMap)) {
+                if (wordPatternMatchHelper(pStart + 1, pattern, i + 1, str, forwardMap, invertedMap)) {
                     return true;
                 }
 
                 forwardMap.remove(pChar);
                 invertedMap.remove(curr);
+             
             } else if (forwardMap.containsKey(pChar) && invertedMap.containsKey(curr)) {
                 String dict = forwardMap.get(pChar);
                 char pCharDict = invertedMap.get(curr);
@@ -121,8 +121,7 @@ public class Solution {
                     continue;
                 }
 
-                if (wordPatternMatchHelper(pStart + 1, pattern, i + 1, str,
-                        forwardMap, invertedMap)) {
+                if (wordPatternMatchHelper(pStart + 1, pattern, i + 1, str, forwardMap, invertedMap)) {
                     return true;
                 }
             }
