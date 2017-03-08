@@ -46,7 +46,7 @@ public class RandomizedSet {
             }
  
             //if the key is the last element added 
-            if(index==map1.size()-1){
+            if(index==map1.size()+1){
                 return true;
             }    
  
@@ -54,7 +54,7 @@ public class RandomizedSet {
             int key1 = map2.get(map2.size());
  
             map1.put(key1, index);
-            map2.remove(map2.size());
+            map2.remove(map2.size()+1);
             map2.put(index, key1);
  
         }else{
