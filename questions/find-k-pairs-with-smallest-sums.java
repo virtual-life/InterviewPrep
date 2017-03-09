@@ -31,6 +31,12 @@ Time - O(klogk) - since queue.size <= k and we do at most k loop.
 
 */
 
+/*
+ For every numbers in nums1, its best partner(yields min sum) always strats from nums2[0] since arrays are all sorted; 
+ And for a specific number in nums1, its next candidate sould be this (specific number) + nums2[current_associated_index + 1], 
+ unless out of boundary
+*/
+
 
 public class Solution {
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
