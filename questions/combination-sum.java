@@ -33,14 +33,12 @@ public class Solution {
             return;
         }
         
-        int prev=-1;
         for (int i = cur; i < candidates.length; i++) {
               
-            if(candidates[i] <= target && prev!=candidates[i]){     
+            if(candidates[i] <= target ){     
                 list.add(candidates[i]);
                 helper(candidates, result, list, i, target - candidates[i]);
-                list.remove(list.size() - 1);
-                prev=candidates[i];  
+                list.remove(list.size() - 1); 
             }                  
         }
     }
