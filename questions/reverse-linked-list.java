@@ -3,6 +3,9 @@ Reverse a singly linked list.
 
 Hint:
 A linked list can be reversed either iteratively or recursively. Could you implement both?
+
+Time Complexity: O(n)
+Space Complexity: O(1)
  */
 
 public class Solution {
