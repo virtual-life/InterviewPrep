@@ -34,10 +34,10 @@ then ignore the last character (keep the first character) and solve it and pick 
 
 Recursive Equations:
 
-LPS[i, i]	=	1	                                Every single character is a palindrome by itself of length 1
-LPS[i, j]	=	2	                                if j=i+1, sequence has only 2 characters
-LPS[i, j]	=	2 + LPS[i-1, j-1]	                If first and last characters are same
-LPS[i, j]	=	MAX(LPS[i+1,j], LPS[i, j-1])	    If first and last characters are not same
+dp[i, i]	=	1	                                Every single character is a palindrome by itself of length 1
+dp[i, j]	=	2	                                if j=i+1, sequence has only 2 characters
+dp[i, j]	=	2 + dp[i-1, j-1]	                If first and last characters are same
+dp[i, j]	=	MAX(dp[i+1,j], dp[i, j-1])	    If first and last characters are not same
 
 */
 
