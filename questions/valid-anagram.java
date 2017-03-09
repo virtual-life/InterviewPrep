@@ -20,12 +20,12 @@ import java.util.HashMap;
 public class Solution {
     /**
      *
-     Time complexity : O(n \log n)O(nlogn). Assume that nn is the length of ss, sorting costs O(n \log n)O(nlogn)
-     and comparing two strings costs O(n)O(n). Sorting time dominates and the overall time complexity is O(n \log n)O(nlogn).
+     Time complexity : O(nlogn). Assume that n is the length of s, sorting costs O(nlogn)
+     and comparing two strings costs O(n). Sorting time dominates and the overall time complexity is O(nlogn).
 
-     Space complexity : O(1)O(1). Space depends on the sorting implementation which, usually,
-     costs O(1)O(1) auxiliary space if heapsort is used. Note that in Java, toCharArray()
-     makes a copy of the string so it costs O(n)O(n) extra space, but we ignore this for complexity analysis because:
+     Space complexity : O(1). Space depends on the sorting implementation which, usually,
+     costs O(1) auxiliary space if heapsort is used. Note that in Java, toCharArray()
+     makes a copy of the string so it costs O(n) extra space, but we ignore this for complexity analysis because:
 
      It is a language dependent detail.
      It depends on how the function is designed. For example, the function parameter types can be changed to char[].
@@ -43,9 +43,11 @@ public class Solution {
     }
 
     /**
-     Time complexity : O(n)O(n). Time complexity is O(n)O(n) because accessing the counter table is a constant time operation.
+     Input contains unicode characters
+     
+     Time complexity : O(n). Time complexity is O(n) because accessing the counter table is a constant time operation.
 
-     Space complexity : O(1)O(1). Although we do use extra space, the space complexity is O(1)O(1) because the table's size stays constant no matter how large nn is.
+     Space complexity : O(1). Although we do use extra space, the space complexity is O(1) because the table's size stays constant no matter how large n is.
      */
 
     public boolean isAnagram2(String s, String t) {
