@@ -40,14 +40,17 @@ Time - O(klogk) - since queue.size <= k and we do at most k loop.
 
 public class Solution {
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
-        List<int[]> res = new ArrayList<>();
+        List<int[]> result = new ArrayList<>();
         if(nums1 == null || nums1.length == 0 || 
-                nums2 == null || nums2.length == 0) return res;
+                nums2 == null || nums2.length == 0) return result;
 
+       // Pair is used to store the sum, the index in nums1 and the index in nums2.
         class Pair{
             int x;
             int y;
-            Pair(int x, int y){
+            int sum;
+            Pair(int sum, int x, int y){
+                this.sum = sum;
                 this.x = x;
                 this.y =y;
             }
@@ -56,35 +59,27 @@ public class Solution {
         Comparator<Pair> comp = new Comparator<Pair>(){
             @Override
             public int compare(Pair p1, Pair p2){
-                return nums1[p1.x] + nums2[p1.y]
-                        - nums1[p2.x] - nums2[p2.y];
+                return p1.sum - p2.sum;
             }
         };
 
         PriorityQueue<Pair> queue = new PriorityQueue<Pair>(k, comp);
-
-        boolean[][] visited = new boolean[nums1.length][nums2.length];
-
-        queue.offer(new Pair(0, 0));
-        visited[0][0] = true;
-
-        int[][] close = new int[][]{{0,1},{1,0}};
-        while(k > 0 && !queue.isEmpty()){
-            k--;
-            Pair p = queue.poll();
-            res.add(new int[]{nums1[p.x], nums2[p.y]});
-            for(int i=0; i< 2;i++){
-                int tx = p.x + close[i][0];
-                int ty = p.y + close[i][1];
-                if(tx < nums1.length && ty <nums2.length && !visited[tx][ty]){
-                    queue.offer(new Pair(tx, ty));
-                    visited[tx][ty] = true;
-
-                }
-
+        
+        // add the first column
+        for (int i=0; i<nums1.length; i++){         
+            queue.add(new Pair(nums1[i]+nums2[0], i, 0));
+        }
+        
+        while (k-- > 0 && !queue.isEmpty()){
+         
+            Pair current = queue.poll();
+            result.add(new int[]{nums1[current.x], nums2[current.y]});
+            // if the current one has a right candidate, add it to the queue. 
+            if (current.y+1 < nums2.length){
+                queue.add(new Pair(nums1[current.x]+nums2[current.y+1], current.x, current.y+1));
             }
         }
-
-        return res;
+        
+        return result;
     }
 }
