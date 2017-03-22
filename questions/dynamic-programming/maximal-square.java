@@ -9,6 +9,17 @@
 
  http://yucoding.blogspot.com/2015/10/leetcode-question-maximal-square.html
  http://buttercola.blogspot.com/2015/09/leetcode-maximal-square.html
+ 
+ Define dp[i][j] as the length of the maximal square of which the right bottom point ended with matrix[i][j]. 
+  -- Initial value 
+        dp[0][j] = matrix[0][j]; 
+        dp[i][0] = matrix[i][0];
+  -- Transit function: 
+        If matrix[i][j] == 1, 
+            dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
+  -- Final state, max(dp[i][j] * dp[i][j])
+
+
  */
 
 
