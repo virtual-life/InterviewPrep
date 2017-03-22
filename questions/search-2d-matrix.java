@@ -34,6 +34,7 @@ public class Solution {
         int row = m - 1;
         int col = 0;
 
+       // start from botton left corner
         while (row >= 0 && col < n) {
             if (target == matrix[row][col]) {
                 return true;
