@@ -17,10 +17,10 @@ Time = O(n)
  - if the current char and previous char >26
  - if the previous char =='0'
  
- dp[n] = denote the number of decode ways for a string of length n
+ dp[n] = denote the number of ways to decode a string of length n
  
- dp[i] = dp[i-1]                if S[i-1] is a valid char
-  or   = dp[i-1]+ dp[i-2]       if S[i-1] and S[i-2] together is still a valid char.
+ dp[i] = dp[i-1]                if S[i-1] is a valid number ( anything other than 0 )
+  or   = dp[i-1]+ dp[i-2]       if S[i-1] and S[i-2] together is still a valid number.
   
 */
 
