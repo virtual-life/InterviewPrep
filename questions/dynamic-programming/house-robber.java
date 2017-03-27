@@ -55,15 +55,15 @@ public class Solution {
     
     public int rob(int[] nums, int offset) {
         
-        if(nums.length <= 1 + offset){
-            return nums.length <= offset ? 0 : nums[0 + offset]; 
+        if( offset + 1 >= nums.length ){
+            return offset >= nums.length? 0 : nums[offset]; 
         }
         
-        int a = nums[0 + offset];        
-        int b = Math.max(nums[0 + offset], nums[1 + offset]);
+        int a = nums[offset];        
+        int b = Math.max(nums[offset], nums[offset + 1]);
        
         //check for loop condition 
-        for(int i = 2 + offset; i < nums.length - 1 + offset; i++){
+        for(int i = offset + 2; i < nums.length + offset -1 ; i++){
             int tmp = b;
             b = Math.max(a + nums[i], b);
             a = tmp;
@@ -74,7 +74,10 @@ public class Solution {
 
 
 /**
-The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked houses were broken into on the same night.
+The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." 
+Besides the root, each house has one and only one parent house. A
+fter a tour, the smart thief realized that "all houses in this place forms a binary tree". 
+It will automatically contact the police if two directly-linked houses were broken into on the same night.
 
 Determine the maximum amount of money the thief can rob tonight without alerting the police.
 
