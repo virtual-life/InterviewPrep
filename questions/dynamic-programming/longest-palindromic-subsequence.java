@@ -36,7 +36,7 @@ Recursive Equations:
 
 dp[i, i]	=	1	                                Every single character is a palindrome by itself of length 1
 dp[i, j]	=	2	                                if j=i+1, sequence has only 2 characters
-dp[i, j]	=	2 + dp[i-1, j-1]	                If first and last characters are same
+dp[i, j]	=	2 + dp[i+1, j-1]	                If first and last characters are same
 dp[i, j]	=	MAX(dp[i+1,j], dp[i, j-1])	    If first and last characters are not same
 
 */
