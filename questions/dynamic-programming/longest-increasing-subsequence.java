@@ -26,15 +26,16 @@ public class Solution {
         }
 
         int[] dp = new int[nums.length + 1];
-        for (int i = 1; i < nums.length + 1; i++) {
+        for (int i = 0; i < nums.length; i++) {
             dp[i] = 1;
         }
 
         int maxLen = 1;
 
-        for (int i = 1; i <= nums.length; i++) {
-            for (int j = 1; j < i; j++) {
-                if (nums[i - 1] > nums[j - 1]) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                 
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
@@ -48,17 +49,36 @@ public class Solution {
     /**
      * Time - O(n logn )
      * https://leetcode.com/discuss/67609/short-java-solution-using-dp-o-n-log-n
+     * Using Binary Search 
      */
+ 
+ /*
+ Arrays.binarySearch(int[] a, int key) :
+ 
+ This method returns index of the search key, if it is contained in the array, else it returns (-(insertion point) - 1). 
+ The insertion point is the point at which the key would be inserted into the array: the index of the first element greater than the key, 
+ or a.length if all elements in the array are less than the specified key.
+
+As a result pos is equal to insertion_index, which is equal to dp.length. 
+So the dp[pos] = nums[i]; line fails, because pos is out of bounds.
+
+This problem does not happen when searching just part of the array by using Arrays.binarySearch(dp, 0, len, nums[i]), 
+because in this case the insertion index is len.
+ */
 
         public int lengthOfLIS(int[] nums) {
             int[] dp = new int[nums.length];
             int len = 0;
 
-            for (int x : nums) {
-                int i = Arrays.binarySearch(dp, 0, len, x);
-                if (i < 0) i = -(i + 1);
-                dp[i] = x;
-                if (i == len) len++;
+            for (int i = 0; i<nums.length; i++) {
+                int pos = Arrays.binarySearch(dp, 0, len, nums[i]);
+                if (pos < 0){ 
+                   pos = -(pos + 1);
+                }
+                dp[pos] = nums[i];
+                if (pos == len){
+                   len++;
+                }
             }
 
             return len;
