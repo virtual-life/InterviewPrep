@@ -41,14 +41,16 @@ public class Solution {
         // Start from the right-most-bottom-most corner and
         // one by one store characters in lcs[]
         int i = m, j = n;
-        while (i > 0 && j > 0)
-        {
+        while (i > 0 && j > 0){
+         
             // If current character in a & b  are same, then
             // current character is part of LCS
-            if (a.charAt(i-1) == b.charAt(j-1) )
-            {
+            if (a.charAt(i-1) == b.charAt(j-1) ){
+             
                 ch[index-1] = a.charAt(i-1);
-                i--; j--; index--;
+                i--; 
+                j--; 
+                index--;
             }
 
             // If not same, then find the larger of two and
