@@ -18,29 +18,34 @@ import java.util.List;
 
 public class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
+     
+        List<String> result = new ArrayList<String>();
 
-        return printPaths(root,new ArrayList<>(),"");
+        return printPaths(root,result,"");
     }
 
     // pre-order traversal
-    public List<String> printPaths(TreeNode node, List<String> path, String lpath){
-        if(node==null){
-            return path;
+    public List<String> printPaths(TreeNode node, List<String> result, String path){
+       
+       /* IMPROTANT STEP */
+       if( node == null){
+            return result;
         }
-        if(lpath != ""){
-            lpath = lpath+"->"+node.val;
+     
+        if(path != ""){
+            path = path+"->"+node.val;
 
         }else{
-            lpath = lpath+node.val;
+            path = path+node.val;
         }
 
         if(node.left==null && node.right==null){
-            path.add(lpath);
-            return path;
+            result.add(path);
+            return result;
         }
         else{
-            printPaths(node.left,path, new String(lpath));
-            printPaths(node.right,path, new String(lpath));
+            printPaths(node.left,result, new String(path));
+            printPaths(node.right,result, new String(path));
         }
         return path;
     }
