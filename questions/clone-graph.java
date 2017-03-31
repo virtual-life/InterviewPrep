@@ -54,8 +54,8 @@ public GraphNode cloneGraph(GraphNode node) {
     HashMap<GraphNode,GraphNode> map = new HashMap<GraphNode,GraphNode>();
  
     queue.add(node);
-    GraphNode nodeCopy = new GraphNode(node.label);
-    map.put(node, nodeCopy);
+    GraphNode newNodeCopy = new GraphNode(node.label);
+    map.put(node, newNodeCopy);
  
     while(!queue.isEmpty()){
         GraphNode curr = queue.remove();
@@ -73,5 +73,5 @@ public GraphNode cloneGraph(GraphNode node) {
             }
         }
      }
-     return newHead;
+     return newNodeCopy;
 }
