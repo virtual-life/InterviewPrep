@@ -53,7 +53,7 @@ public int findRotationPoint(String[] words) {
         if (low + 1 == high) {
         
              // if array is NOT rotated
-             if( words[high].compareTo(words[low] >= 0){
+             if( words[high].compareTo(words[low]) >= 0){
                     return 0;
              }
                 
