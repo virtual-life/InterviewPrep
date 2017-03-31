@@ -28,27 +28,33 @@ public class AllOne {
     private final LinkedHashSet<String>[] frequencyList;
     private int lowestFrequency;
     private int maxFrequency;
+    private int capacity;
 
     /** Initialize your data structure here. */
     public AllOne() {
-    
+        this.capacity = 100;
         this.map = new HashMap<String, Integer>();
-        this.frequencyList = new LinkedHashSet<String>[];
-        this.lowestFrequency = 0;
+        this.lowestFrequency = -1;
         this.maxFrequency = Integer.MIN_VALUE;
+        
+        this.frequencyList = (LinkedHashSet<String>[])new LinkedHashSet[capacity];
+        for(int i=0; i<capacity; i++){
+            frequencyList[i]=new LinkedHashSet<String>();
+        }
     }
     
     /** Inserts a new key <Key> with value 1. Or increments an existing key by 1. */
     public void inc(String key) {
     
-        if(map.containskey(key){
-          int curFreq = map.get(key)
-          int newFreq = curFreq +1
+        if(map.containsKey(key)){
+          int curFreq = map.get(key);
+          int newFreq = curFreq +1;
           map.put(key,newFreq);
           LinkedHashSet<String> curFreqList = frequencyList[curFreq];
           LinkedHashSet<String> newFreqList = frequencyList[newFreq];
           curFreqList.remove(key);
           newFreqList.add(key);
+          
           if(lowestFrequency == curFreq && curFreqList.isEmpty()){
             lowestFrequency = newFreq;
           }
@@ -59,45 +65,98 @@ public class AllOne {
           map.put(key,0);
           LinkedHashSet<String> freqList = frequencyList[0];
           freqList.add(key);
+          
+          lowestFrequency = 0;
+
+          if(maxFrequency == Integer.MIN_VALUE){
+              maxFrequency = 0;
+          }
         }
     }
     
-    /** Decrements an existing key by 1. If Key's value is 1, remove it from the data structure. */
+    /** Decrements an existing key by 1. If Key's value is 0, remove it from the data structure. */
     public void dec(String key) {
     
-        if(map.containskey(key){
-          int curFreq = map.get(key)
-          if( curFreq == 1){
-            map.remove(key);
-          }
+        if(map.containsKey(key)){
+          
+          int curFreq = map.get(key);  
           LinkedHashSet<String> curFreqList = frequencyList[curFreq];
-          curFreqList.remove(key);
-          else{
-            int newFreq = curFreq - 1
+          
+          if( curFreq == 0){
+            curFreqList.remove(key);
+            map.remove(key);
+          }else{
+            int newFreq = curFreq - 1;
             map.put(key,newFreq);
             LinkedHashSet<String> newFreqList = frequencyList[newFreq];
             curFreqList.remove(key);
             newFreqList.add(key);
           }
           
-          if(lowestFrequency == curFreq && curFreq != 1){
-            lowestFrequency = newFreq;
+          if(curFreq == lowestFrequency ){
+             findNextLowestFrequency();
           }
-          if(curFreq > maxFrequency && curFreqList.isEmpty()) ){
-            maxFrequency = newFreq;
+          if(curFreq == maxFrequency){
+             findNextHighestFrequency();
           }
+         
+        }
+    }
+    
+    public void findNextLowestFrequency() {
+        while (lowestFrequency <= maxFrequency && frequencyList[lowestFrequency].isEmpty()) {
+            lowestFrequency++;
+        }
+        if (lowestFrequency > maxFrequency) {
+            lowestFrequency = Integer.MIN_VALUE;
+        }
+    }
+    
+    public void findNextHighestFrequency() {
+        while (maxFrequency >= 0 && frequencyList[maxFrequency].isEmpty()) {
+            maxFrequency--;
+        }
+        if (maxFrequency < 0) {
+            maxFrequency = Integer.MIN_VALUE;
         }
     }
     
     /** Returns one of the keys with maximal value. */
     public String getMaxKey() {
-        LinkedHashSet<String> maxFreqList = frequencyList[maxFrequency];
-        return maxfreqList(new Random().nextInt(maxFreqList.sixe()));
+        if(maxFrequency > Integer.MIN_VALUE){
+            LinkedHashSet<String> maxFreqList = frequencyList[maxFrequency];
+            if(maxFreqList.size() >0){
+                int randNum = new Random().nextInt(maxFreqList.size()); 
+                //int i = 0;
+                Iterator<String> itr = maxFreqList.iterator();
+                while(itr.hasNext()){
+                    if (randNum >= 0)
+                        return itr.next();
+                    randNum--;
+                }
+            }
+            
+        }
+        
+        return "";
     }
     
     /** Returns one of the keys with Minimal value. */
-    public String getMinKey() {    
-        LinkedHashSet<String> minFreqList = frequencyList[lowestFrequency];
-        return maxfreqList(new Random().nextInt(maxFreqList.sixe()));
+    public String getMinKey() {
+        if(lowestFrequency > -1){
+           LinkedHashSet<String> minFreqList = frequencyList[lowestFrequency];
+            if(minFreqList.size() >0){
+                int randNum = new Random().nextInt(minFreqList.size()); 
+                // int i = 0;
+                Iterator<String> itr = minFreqList.iterator();
+                while(itr.hasNext()){
+                    if (randNum >= 0)
+                        return itr.next();
+                    randNum--;
+                }
+            }
+             
+        }
+        return "";
     }
 }
