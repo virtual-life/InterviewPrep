@@ -58,7 +58,7 @@ public class Solution {
 
       
 
-        PriorityQueue<Pair> queue = new PriorityQueue<Pair>(k, new PairComparator);
+        PriorityQueue<Pair> queue = new PriorityQueue<Pair>(k, new PairComparator());
         
         // add the first column
         for (int i=0; i<nums1.length; i++){         
