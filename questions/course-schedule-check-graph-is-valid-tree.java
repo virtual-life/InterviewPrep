@@ -40,6 +40,12 @@ Thus if we saw that a node has been validated, we don't need to calculate again 
 For the node 0, we have already validated 2 3 and 4 do not have a circle. Thus we don't need to calculate for the node 2 3 4 again.
  */
 
+/**
+Check is graph is valid tree 
+    public boolean validTree(int n, int[][] edges) {
+        
+    }
+*/
 
 public class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
@@ -65,7 +71,7 @@ public class Solution {
             }
         }
 
-        int[] visited = new int[numCourses];
+        boolean[] visited = new boolean[numCourses];
         // Check if the graph contains a circle, if yes, return false.
         for (int i = 0; i < numCourses; i++) {
             if (hasCircles(i, visited, adjList)) {
@@ -77,15 +83,12 @@ public class Solution {
     }
 
     private boolean hasCircles(int vertexId, int[] visited, Map<Integer, List<Integer>> adjList) {
-        if (visited[vertexId] == -1) {
+        if (visited[vertexId]) {
             return true;
         }
 
-        if (visited[vertexId] == 1) {
-            return false;
-        }
-
-        visited[vertexId] = -1;
+        // mark node as visited 
+        visited[vertexId] = true;
 
         List<Integer> neighbors = adjList.get(vertexId);
         if (neighbors != null) {
@@ -95,8 +98,8 @@ public class Solution {
                 }
             }
         }
-
-        visited[vertexId] = 1;
+        // reset node 
+        visited[vertexId] = false;
 
         return false;
     }
