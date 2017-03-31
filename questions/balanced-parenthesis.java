@@ -17,15 +17,15 @@ public class Solution {
 
     public static boolean balanced(String input){
 
-        Stack<Character> parenthesis  =   new Stack<Character>();
+        Stack<Character> stack  =   new Stack<Character>();
         for (char c : input.toCharArray()){
             if(brackets.containsKey(c)){
-                parenthesis.push(c);
-            }else if(parenthesis.empty() || brackets.get(parenthesis.pop()) != c){
+                stack.push(c);
+            }else if(stack.empty() || brackets.get(stack.pop()) != c){
                 return false;
             }
         }
-        if(!parenthesis.empty()){
+        if(!stack.empty()){
             return false;
         }
 
