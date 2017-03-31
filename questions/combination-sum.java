@@ -27,13 +27,13 @@ public class Solution {
         return result;        
     }
     
-    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> list, int cur, int target) {
+    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> list, int curIndex, int target) {
         if (target == 0) {
             result.add(new ArrayList<Integer>(list));
             return;
         }
         
-        for (int i = cur; i < candidates.length; i++) {
+        for (int i = curIndex; i < candidates.length; i++) {
               
             if(candidates[i] <= target ){     
                 list.add(candidates[i]);
@@ -59,14 +59,14 @@ public class Solution {
         return result;        
     }
     
-    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> list, int cur, int target) {
+    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> list, int curIndex, int target) {
         if (target == 0) {
             result.add(new ArrayList<Integer>(list));
             return;
         }
         
         int prev=-1;
-        for (int i = cur; i < candidates.length; i++) {
+        for (int i = curIndex; i < candidates.length; i++) {
               
             if(candidates[i] <= target && prev!=candidates[i]){     
                 list.add(candidates[i]);
