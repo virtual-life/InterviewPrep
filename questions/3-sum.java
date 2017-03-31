@@ -87,7 +87,7 @@ public int threeSumClosest(int[] nums, int target) {
 			        int diff = Math.abs(sum - target);
  
 			        if(diff == 0) 
-               return sum;
+               			     return sum;
  
 			        if (diff < min) {
 				           min = diff;
