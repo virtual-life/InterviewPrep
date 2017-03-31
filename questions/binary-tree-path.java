@@ -38,7 +38,7 @@ public class Solution {
         }else{
             path = path+node.val;
         }
-
+        // if leaf node add it to the result and return 
         if(node.left==null && node.right==null){
             result.add(path);
             return result;
