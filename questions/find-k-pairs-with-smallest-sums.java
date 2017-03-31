@@ -65,7 +65,7 @@ public class Solution {
             queue.add(new Pair(nums1[i]+nums2[0], i, 0));
         }
         
-        while (k-- > 0 && !queue.isEmpty()){
+        while (k > 0 && !queue.isEmpty()){
          
             Pair current = queue.poll();
             result.add(new int[]{nums1[current.x], nums2[current.y]});
@@ -73,6 +73,8 @@ public class Solution {
             if (current.y+1 < nums2.length){
                 queue.add(new Pair(nums1[current.x]+nums2[current.y+1], current.x, current.y+1));
             }
+         
+            k = k-1;
         }
         
         return result;
