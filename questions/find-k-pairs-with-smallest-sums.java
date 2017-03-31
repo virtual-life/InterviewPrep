@@ -56,14 +56,9 @@ public class Solution {
             }
         }   
 
-        Comparator<Pair> comp = new Comparator<Pair>(){
-            @Override
-            public int compare(Pair p1, Pair p2){
-                return p1.sum - p2.sum;
-            }
-        };
+      
 
-        PriorityQueue<Pair> queue = new PriorityQueue<Pair>(k, comp);
+        PriorityQueue<Pair> queue = new PriorityQueue<Pair>(k, new PairComparator);
         
         // add the first column
         for (int i=0; i<nums1.length; i++){         
@@ -82,4 +77,11 @@ public class Solution {
         
         return result;
     }
+ 
+   public class PairComparator implements Comparator<Pair>{     
+      @Override
+      public int compare(Pair p1, Pair p2){
+          return p1.sum - p2.sum;
+     }      
+   } 
 }
