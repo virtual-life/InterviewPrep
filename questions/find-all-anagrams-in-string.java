@@ -43,8 +43,11 @@ public class Solution {
     while (end < s.length()) {
         
         // If the char at end appeared in p (since it's not -1 after decreasing), we decrease count
-        if (chars[s.charAt(end++)-'a']-- >= 1)
+        if (chars[s.charAt(end)-'a']-- >= 1){
             count--;
+        }
+        
+        end = end+1;
         
         if (count == 0)
             result.add(start);
