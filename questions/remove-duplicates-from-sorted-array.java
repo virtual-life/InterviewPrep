@@ -28,7 +28,8 @@ public class Solution {
 			i++;
 		}
 	}
- // this is to do it in-place
+         // this is to do it in-place
+	 // public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
 	 System.arraycopy(nums,0,nums,0, j + 1);
  
 	return j+1;
