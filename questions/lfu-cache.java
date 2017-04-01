@@ -79,11 +79,14 @@ public class LFUCache {
     public LFUCache(int capacity) {
 
         this.map = new HashMap<Integer, CacheNode>(capacity);
-        this.frequencyList = new LinkedHashSet[capacity];
         this.lowestFrequency = 0;
         this.maxFrequency = capacity - 1;
         this.maxCacheSize = capacity;
-        initFrequencyList();
+        
+        this.frequencyList = (LinkedHashSet[])new LinkedHashSet[capacity];
+        for(int i=0; i<capacity; i++){
+            frequencyList[i]=new LinkedHashSet();
+        }
     }
 
 
@@ -124,7 +127,7 @@ public class LFUCache {
             int nextFrequency = currentFrequency + 1;
             LinkedHashSet<CacheNode> currentNodes = frequencyList[currentFrequency];
             LinkedHashSet<CacheNode> newNodes = frequencyList[nextFrequency];
-            moveToNextFrequency(currentNode, nextFrequency, currentNodes, newNodes);
+            moveToNextFrequency(currentNode, nextFrequency, currentNodes, newNodes); // remove from curr, add to next, next new frequency
             map.put(currentNode.key, currentNode);
             if (lowestFrequency == currentFrequency && currentNodes.isEmpty()) {
                 lowestFrequency = nextFrequency;
@@ -148,12 +151,6 @@ public class LFUCache {
             return currentNode.value;
         } else {
             return -1;
-        }
-    }
-
-    private void initFrequencyList() {
-        for (int i = 0; i <= maxFrequency; i++) {
-            frequencyList[i] = new LinkedHashSet<CacheNode>();
         }
     }
 
