@@ -18,16 +18,18 @@ public Set<String> getPermutations(String inputString) {
     // recursive call: get all possible permutations for all chars except last
     Set<String> permutationsOfAllCharsExceptLast = getPermutations(allCharsExceptLast);
 
+    
+    Set<String> result = new HashSet<String>();
+    
     // put the last char in all possible positions for each of the above permutations
-    Set<String> permutations = new HashSet<String>();
-    for (String permutationOfAllCharsExceptLast : permutationsOfAllCharsExceptLast) {
-        for (int position = 0; position <= allCharsExceptLast.length(); position++) {
-            String permutation = permutationOfAllCharsExceptLast.substring(0, position) + lastChar + permutationOfAllCharsExceptLast.substring(position);
-            permutations.add(permutation);
+    for (String ss : permutationsOfAllCharsExceptLast) {
+        for (int position = 0; position <= ss.length(); position++) {
+            String permutation = ss.substring(0, position) + lastChar + ss.substring(position);
+            result.add(permutation);
         }
     }
 
-    return permutations;
+    return result;
 }
 
 
