@@ -84,15 +84,15 @@ public class Solution {
 	         
 	    for(i = 0; i < a.size(); i++) { 
 	       if((a.get(i) & setBitNum) > 0 )
-	           missing = missing ^ a.get(i); // arr[i] belongs to Set A 
+	           repeat = repeat ^ a.get(i); // arr[i] belongs to Set A 
 	       else 
-	           repeat = repeat ^ a.get(i); // arr[i] belongs to Set B 
+	           missing = missing ^ a.get(i); // arr[i] belongs to Set B 
 	    } 
 	       for(i = 1; i <= a.size(); i++) { 
 	           if((i & setBitNum)> 0) 
-	                missing = missing ^ i; // arr[i] belongs to Set A 
+	                repeat = repeat ^ i; // arr[i] belongs to Set A 
 	            else 
-	                repeat = repeat ^ i; // arr[i] belongs to Set B 
+	                missing = missing ^ i; // arr[i] belongs to Set B 
 	       } 
 	       
 	        result.add(repeat);
