@@ -67,7 +67,7 @@ public class Solution {
 }
 
 /**
- Edit distance between 2 words  - http://www.programcreek.com/2013/12/edit-distance-in-java/
+ Edit distance between 2 words  - http://professorjava.weebly.com/edit-distance.html
 */
 
 /**
