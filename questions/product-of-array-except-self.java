@@ -37,20 +37,24 @@ public class Solution {
 
         return result;
     }
+  
+ /**
+  Time - O(n)
+  Space - O(n)
+ */
     
-    
-    public int[] getProductsOfAllIntsExceptAtIndex(int[] intArray) {
+    public int[] getProductsOfAllIntsExceptAtIndex(int[] arr) {
 
     // we make an array with the length of the input array to
     // hold our products
-    int[] productsOfAllIntsExceptAtIndex = new int[intArray.length];
+    int[] result = new int[arr.length];
 
     // for each integer, we find the product of all the integers
     // before it, storing the total product so far each time
     int productSoFar = 1;
-    for (int i = 0; i < intArray.length; i++) {
-        productsOfAllIntsExceptAtIndex[i] = productSoFar;
-        productSoFar *= intArray[i];
+    for (int i = 0; i < arr.length; i++) {
+        result[i] = productSoFar;
+        productSoFar = productSoFar * arr[i];
     }
 
     // for each integer, we find the product of all the integers
@@ -58,11 +62,11 @@ public class Solution {
     // product of all the integers before it, now we're storing
     // the total product of all other integers
     productSoFar = 1;
-    for (int i = intArray.length - 1; i >= 0; i--) {
-        productsOfAllIntsExceptAtIndex[i] *= productSoFar;
-        productSoFar *= intArray[i];
+    for (int i = arr.length - 1; i >= 0; i--) {
+        result[i] =  result[i] * productSoFar;
+        productSoFar = productSoFar * arr[i];
     }
 
-    return productsOfAllIntsExceptAtIndex;
-}
+    return result;
+  }
 }
