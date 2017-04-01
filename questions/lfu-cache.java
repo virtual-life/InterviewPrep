@@ -55,6 +55,19 @@ import java.util.Map;
 
 
 public class LFUCache {
+    
+    private class CacheNode {
+        public final int key;
+        public int value;
+        public int frequency;
+
+        public CacheNode(int key, int value int frequency) {
+            this.key = key;
+            this.value = value;
+            this.frequency = frequency;
+        }
+
+    }
 
     private final Map<Integer, CacheNode> map;
     private final LinkedHashSet[] frequencyList;
@@ -180,18 +193,5 @@ public class LFUCache {
         if (lowestFrequency > maxFrequency) {
             lowestFrequency = 0;
         }
-    }
-
-    private class CacheNode {
-        public final int key;
-        public int value;
-        public int frequency;
-
-        public CacheNode(int key, int value int frequency) {
-            this.key = key;
-            this.value = value;
-            this.frequency = frequency;
-        }
-
     }
 }
