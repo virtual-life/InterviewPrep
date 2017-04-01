@@ -9,7 +9,7 @@
  result[i] = before[i] * after[i]
 
  Time - O(n)
- Space - O(1)
+ Space - O(n)
 
  */
 
@@ -40,7 +40,7 @@ public class Solution {
   
  /**
   Time - O(n)
-  Space - O(n)
+  Space - O(1)
  */
     
     public int[] getProductsOfAllIntsExceptAtIndex(int[] arr) {
