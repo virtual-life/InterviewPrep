@@ -29,7 +29,7 @@ Space - O(n)
     for (int coin : denominations) {
         for (int higherAmount = coin; higherAmount < amount + 1; higherAmount++) {
             int higherAmountRemainder = higherAmount - coin;
-            waysOfDoingNCents[higherAmount] += waysOfDoingNCents[higherAmountRemainder];
+            waysOfDoingNCents[higherAmount] = waysOfDoingNCents[higherAmount] + waysOfDoingNCents[higherAmountRemainder];
         }
     }
 
