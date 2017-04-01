@@ -34,9 +34,30 @@ public Set<String> getPermutations(String inputString) {
 
 //Iterative 
 
-
-
 /*
 Bonus
-What if our input string had some duplicates?
+What if our input string had some duplicates? - below code handles that 
 */
+
+public class Solution {
+    public List<String> permuteUnique(String inputString) {
+        
+        List<String> result = new ArrayList<String>();
+	    result.add("");
+ 
+	for (int i = 0; i < inputString.length(); i++) {
+		Set<String> currentSet = new HashSet<String>();
+		
+		for (String l : result) {
+			for (int j = 0; j < l.size()+1; j++) {			    
+				String temp = l.substring(0, j) + inputString.charAt(i) + l.substring(j);
+				currentSet.add(temp);				
+			}
+		}
+		result = new ArrayList<String>(currentSet);
+	} 
+	return result;
+    }
+}
+
+
