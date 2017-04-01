@@ -7,9 +7,10 @@ Space -
 
 public Set<String> getPermutations(String inputString) {
 
+    Set<String> result = new HashSet<String>();
     // base case
     if (inputString.length() <= 1) {
-        return new HashSet<String>(Arrays.asList(inputString));
+        return result.add(inputString);
     }
 
     String allCharsExceptLast = inputString.substring(0, inputString.length() - 1);
@@ -18,8 +19,6 @@ public Set<String> getPermutations(String inputString) {
     // recursive call: get all possible permutations for all chars except last
     Set<String> permutationsOfAllCharsExceptLast = getPermutations(allCharsExceptLast);
 
-    
-    Set<String> result = new HashSet<String>();
     
     // put the last char in all possible positions for each of the above permutations
     for (String ss : permutationsOfAllCharsExceptLast) {
