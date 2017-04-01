@@ -35,7 +35,7 @@ public class Solution {
             } else {
                 maxlen = Math.max(maxlen, end - start);
 
-                // move the start pointer
+                // move the start pointer  - until a.charAT(start) == s.charAT(end)
                 while (start < end) {
                     set.remove(s.charAt(start));                
                     if (s.charAt(start) == s.charAt(end)) {
