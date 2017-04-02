@@ -27,7 +27,7 @@ public class Solution{
 
         Arrays.sort(S);
 
-        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        HashSet<ArrayList<Integer>> result = new HashSet<ArrayList<Integer>>();
 
         for (int i = 0; i < S.length; i++) {
             ArrayList<ArrayList<Integer>> temp = new ArrayList<ArrayList<Integer>>();
