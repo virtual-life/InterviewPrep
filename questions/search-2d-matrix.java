@@ -95,11 +95,11 @@ public class Solution {
         int m = matrix.length;
         int n = matrix[0].length;
  
-        int start = 0;
-        int end = m*n-1;
+        int low = 0;
+        int high = m*n-1;
  
-        while(start<=end){
-            int mid=(start+end)/2;
+        while(low<=high){
+            int mid=(low+high)/2;
             int midX=mid/n;
             int midY=mid%n;
  
@@ -107,9 +107,9 @@ public class Solution {
                 return true;
  
             if(matrix[midX][midY]<target){
-                start=mid+1;
+                low=mid+1;
             }else{
-                end=mid-1;
+                high=mid-1;
             }
         }
  
