@@ -30,7 +30,7 @@ public class Solution{
         HashSet<ArrayList<Integer>> result = new HashSet<ArrayList<Integer>>();
 
         for (int i = 0; i < S.length; i++) {
-            ArrayList<ArrayList<Integer>> temp = new ArrayList<ArrayList<Integer>>();
+            HashSet<ArrayList<Integer>> temp = new HashSet<ArrayList<Integer>>();
 
             //get sets that are already in result
             for (ArrayList<Integer> a : result) {
@@ -53,6 +53,6 @@ public class Solution{
         //add empty set
         result.add(new ArrayList<Integer>());
 
-        return result;
+        return new ArrayList<ArrayList<Integer>>(result);
     }
 }
