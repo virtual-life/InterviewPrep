@@ -69,6 +69,11 @@ public GraphNode cloneGraph(GraphNode node) {
                 queue.add(aNeighbor);
             }else{
                 // add neighbor's value to curr's neighbor's
+                   //OR
+                // get current's copy
+                //now get its nrighbos and add
+                // neighbor's copy to it 
+                  
                 map.get(curr).neighbors.add(map.get(aNeighbor));
             }
         }
