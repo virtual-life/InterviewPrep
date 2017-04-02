@@ -34,18 +34,21 @@ public class Solution {
             return new int[0];
         }
 
-        Deque<Integer> deque = new LinkedList<Integer>();
+        Deque<Integer> deque = new LinkedList<Integer>();  // Stores the index of the numbers NOT the number 
         int[] result = new int[nums.length - k + 1];
 
         for (int i = 0; i < nums.length; i++) {
+            // Check if current number is greater than last number if yes, remove last index
             while (!deque.isEmpty() && nums[i] >= nums[deque.getLast()]) {
                 deque.removeLast();
             }
 
             deque.addLast(i);
 
-            System.out.println(deque);
+            //System.out.println(deque);
+
             // Remove if the size of the deque is greater than k
+            // Difefrence between current index and the first index in the deque
             if (i - deque.getFirst() + 1 > k) {
                 deque.removeFirst();
             }
