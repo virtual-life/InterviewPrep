@@ -9,6 +9,8 @@
 
  */
 
+// dp[i][j] - LCS of 2 strings of length i and j 
+
 public class Solution {
     public static int getLongestCommonSubsequence(String a, String b){
         int m = a.length();
