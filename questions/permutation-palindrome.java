@@ -28,14 +28,6 @@ public class Solution {
         }
          
         int tolerance = 0;
-//         Iterator it = map.entrySet().iterator();
-//         while (it.hasNext()) {
-//             Map.Entry pair = (Map.Entry) it.next();
-             
-//             if ((int) pair.getValue() % 2 != 0) {
-//                 tolerance++;
-//             }
-//         }
         
         for(Map.Entry<> entry: map.entrySet()){
             if(map.getValue() % 2!= 0){
