@@ -23,6 +23,7 @@ The flattened tree should look like:
              6
 */
 
+//each node’s right child points to the next node of a pre-order traversal.
 
 public class Solution {
     public void flatten(TreeNode root) {
@@ -39,8 +40,7 @@ public class Solution {
                 p.right = p.left;
                 p.left = null;
             }else if(!stack.empty()){
-                TreeNode temp = stack.pop();
-                p.right=temp;
+                p.right = stack.pop();
             }
  
             p = p.right;
