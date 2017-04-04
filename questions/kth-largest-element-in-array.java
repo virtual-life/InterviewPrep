@@ -69,7 +69,7 @@ public class Solution {
                 q.poll();
             }
         }
-
+        // if kth max doesnt exist return max
         if(q.size() < nums.length && q.size() < k){
             while(q.size() > 1){
                 q.poll();
