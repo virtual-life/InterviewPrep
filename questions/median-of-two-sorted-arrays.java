@@ -15,7 +15,7 @@ import java.util.Arrays;
  
  http://www.drdobbs.com/parallel/finding-the-median-of-two-sorted-arrays/240169222?pgno=2
  
- The problem is equivalent to find the kth element in the two sorted array.
+ The problem is equivalent to find the kth element in the two sorted array. -  k is (A's length + B' Length)/2
  */
 
 public class Solution {
@@ -24,26 +24,27 @@ public class Solution {
             return 0.f;
         }
 
-        int n1 = nums1.length;
-        int n2 = nums2.length;
+        int n = nums1.length;
+        int m = nums2.length;
 
         /** Odd number of elements */
-        if ((n1 + n2) % 2 == 1) {
-            return findMedianHelper(nums1, nums2, (n1 + n2) / 2 + 1);
+        if ((n + m) % 2 == 1) {
+            return findMedianHelper(nums1, nums2, (n + m) / 2 + 1);
         }
         /** Even number of elements */
         else {
-            double r1 = findMedianHelper(nums1, nums2, (n1 + n2) / 2);
-            double r2 = findMedianHelper(nums1, nums2, (n1 + n2) / 2 + 1);
+            double r1 = findMedianHelper(nums1, nums2, (n + m) / 2);
+            double r2 = findMedianHelper(nums1, nums2, (n + m) / 2 + 1);
             return ( r1 + r2 ) / 2;
         }
     }
 
     private double findMedianHelper(int[] nums1, int[] nums2, int k) {
+        //If nums1 is empty 
         if (nums1 == null || nums1.length == 0) {
             return nums2[k - 1];
         }
-
+        //If nums2 is empty 
         if (nums2 == null || nums2.length == 0) {
             return nums1[k - 1];
         }
@@ -52,25 +53,25 @@ public class Solution {
             return Math.min(nums1[0], nums2[0]);
         }
 
-        int n1mid = nums1.length/2;
-        int n2mid = nums2.length/2;
+        int mid1 = nums1.length/2;
+        int mid2 = nums2.length/2;
 
         /** Median of nums1 & nums2 */
-        int m1 = nums1[n1mid];
-        int m2 =  nums2[n2mid];
+        int median1 = nums1[mid1];
+        int median2 =  nums2[mid2];
 
         /**
          *
-         If m1 is greater than m2, then median is present in one of the below two subarrays.
-         From first element of ar1 to m1 (ar1[0...|_n/2_|])
-         From m2 to last element of ar2 (ar2[|_n/2_|...n-1])
+         If median1 is greater than median2, then median is present in one of the below two subarrays.
+         From first element of arr1 to median1 (ar1[0...|_n/2_|])
+         From median2 to last element of arr2 (ar2[|_n/2_|...n-1])
          *
          */
-        if (m1 > m2) {
-            if ((n1mid + n2mid + 1) >= k) {
-                return findMedianHelper(Arrays.copyOfRange(nums1, 0, n1mid), nums2, k);
+        if (median1 > median2) {
+            if ((mid1 + mid2 + 1) >= k) {
+                return findMedianHelper(Arrays.copyOfRange(nums1, 0, mid1), nums2, k);
             } else {
-                return findMedianHelper(nums1, Arrays.copyOfRange(nums2, n2mid+1, nums2.length), k - (n2mid + 1));
+                return findMedianHelper(nums1, Arrays.copyOfRange(nums2, mid2+1, nums2.length), k - (mid2 + 1));
             }
         }
         /**
@@ -82,9 +83,9 @@ public class Solution {
          */
         else {
             if ((n1mid + n2mid + 1) >= k) {
-                return findMedianHelper(nums1, Arrays.copyOfRange(nums2, 0, n2mid), k);
+                return findMedianHelper(nums1, Arrays.copyOfRange(nums2, 0, mid2), k);
             } else {
-                return findMedianHelper(Arrays.copyOfRange(nums1, n1mid + 1, nums1.length), nums2, k - (n1mid + 1));
+                return findMedianHelper(Arrays.copyOfRange(nums1, mid1 + 1, nums1.length), nums2, k - (mid1 + 1));
             }
         }
     }
