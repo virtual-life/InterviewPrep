@@ -65,6 +65,6 @@ public int highestProductOf3(int[] arrayOfInts) {
 /*
 Bonus
 What if we wanted the highest product of 4 items?
-What if we wanted the highest product of k items?  
+What if we wanted the highest product of k items?   - http://www.geeksforgeeks.org/largest-product-subarray-size-k/
 If our highest product is really big, it could overflow ↴ . How should we protect against this? - BigInteger or Long 
 */
