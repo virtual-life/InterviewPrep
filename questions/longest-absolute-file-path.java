@@ -38,18 +38,31 @@ Notice that a/aa/aaa/file1.txt is not the longest file path, if there is another
 
 */
 
+/*
+Steps:
+1. Split the string on newline
+2. Get the level of the string in the tree structure by computing the position of last \t  - lastIndexOf
+*/
+
 
 public int lengthLongestPath(String input) {
         Deque<Integer> stack = new ArrayDeque<>();
-        stack.push(0); // "dummy" length
+        stack.push(0); // initial length 
         int maxLen = 0;
         for(String s:input.split("\n")){
-            int lev = s.lastIndexOf("\t")+1; // number of "\t"
-            while(lev+1<stack.size()) stack.pop(); // find parent
-            int len = stack.peek()+s.length()-lev+1; // remove "/t", add"/"
-            stack.push(len);
+            
+            int level = s.lastIndexOf("\t")+1; // number of "\t"
+            System.out.println("level "+level);
+            System.out.println("stack size  "+stack.size());
+            
+            while(level+1<stack.size()) 
+                stack.pop(); // find parent
+            
+            int length = stack.peek() + s.length() - level + 1; // remove "/t", add"/"
+            stack.push(length);
+            
             // check if it is file
-            if(s.contains(".")) maxLen = Math.max(maxLen, len-1); 
+            if(s.contains(".")) maxLen = Math.max(maxLen, length-1); 
         }
         return maxLen;
     }
