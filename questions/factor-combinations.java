@@ -42,26 +42,28 @@ import java.util.List;
 public class Solution {
     public List<List<Integer>> getFactors(int n) {
 
-        List<List<Integer>> factors = new ArrayList<List<Integer>>();
-        getFactorsHelper(factors, new ArrayList<Integer>(),n, n/2);
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        ArrayList<Integer> factors = new ArrayList<Integer>();
+     
+        getFactorsHelper(result,factors ,n, n/2);
         return factors;
     }
 
-    public static void getFactorsHelper(List<List<Integer>> factors, List<Integer> dlist, int n, int largestf){
+    public static void getFactorsHelper(List<List<Integer>> result, List<Integer> factors, int n, int largestf){
         if(n==1){
-            ArrayList<Integer> f = new ArrayList<Integer>(dlist); // Important STEP
+            ArrayList<Integer> f = new ArrayList<Integer>(factors); // Important STEP
             Collections.sort(f);
             if(f.size() >= 1){
-                factors.add(f);
+                result.add(f);
             }
 
         }
 
         for(int i=largestf;i>1 ;i--){
             if(n%i ==0){
-                dlist.add(i);
-                getFactorsHelper(factors,dlist,n/i,i);
-                dlist.remove(dlist.size() - 1);
+                factors.add(i);
+                getFactorsHelper(result,factors,n/i,i);
+                factors.remove(factors.size() - 1);
             }
         }
     }
