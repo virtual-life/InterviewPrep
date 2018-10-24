@@ -22,6 +22,8 @@ Time = O(n)
  dp[i] = dp[i-1]                if S[i-1] is a valid number ( anything other than 0 )
   or   = dp[i-1]+ dp[i-2]       if S[i-1] and S[i-2] together is still a valid number.
   
+ Corner cases: there could be “”, “00” or “01”.
+  
 */
 
 public class Solution {
@@ -30,15 +32,15 @@ public class Solution {
             return 0;
         }
          
-        if (s.charAt(0) == '0') {
+        if (s.charAt(0) == '0') {  // eg 0123 vs 456. 0123 is not a valid decoded number. Basically anything that startswith a 0 is invalid. 
             return 0;
         }
          
         int[] dp = new int[s.length() + 1];
-        dp[0] = 1; // if encoded message has zero characters/number
-        dp[1] = 1;  // is encoded message has one character/number then the number of solution is only 1 
+        dp[0] = 1; // if encoded message has zero characters/number . "" has one decoding: "".
+        dp[1] = 1;  // is encoded message has one character/number then the number of solution is only 1. "3" has one decoding "C".
          
-        for (int i = 2; i <= s.length(); i++) {
+        for (int i = 2; i <= s.length(); i++) { // length 2 to N 
             if (s.charAt(i - 1) != '0') {   // if S[i-1] is a valid char
                 dp[i] = dp[i - 1];
             }
