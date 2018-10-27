@@ -26,10 +26,10 @@ public class Solution {
         
         for(int i = 2; i < nums.length; i++){
             int tmp = b;          
-            b = Math.max(a + nums[i], b);
+            b = Math.max(a + nums[i], b); // dp[i] = max (arr[i] + dp[i-2], dp[i-1])
             a = tmp;
         }
-        return b;
+        return b; // dp[n-1]
     }
 }
 
