@@ -6,6 +6,12 @@
  LCS for input Sequences “AGGTAB” and “GXTXAYB” is “GTAB” of length 4.
 
  Time - O(mn)
+ 
+ Consider the input strings “ABCDGH” and “AEDFHR. 
+ 
+ Last characters do not match for the strings. So length of LCS can be written as:
+ 
+ LCS(“ABCDGH”, “AEDFHR”) = MAX ( LCS(“ABCDG”, “AEDFHR”), LCS(“ABCDGH”, “AEDFH”) )
 
  */
 
