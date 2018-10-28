@@ -24,9 +24,13 @@ Simply put, the trie stores the prefix which does not exist in the board, so we 
 */
 
 /*
-Let's think about the naive solution first. The naive solution is we search the board for each board. So for the dict with n words, and assume the ave. length of each word has length of m. Then without using a Trie, the time complexity would be O(n * rows * cols  * 4^m). 
+Let's think about the naive solution first. The naive solution is we search the board for each word. 
+So for the dict with n words, and assume the ave. length of each word has length of m. 
+Then without using a Trie, the time complexity would be O(n * rows * cols  * 4^m). 
 
-Now let's analyze the time complexity of using a Trie. We put each word into the trie. Search in the Trie takes O(m) time, so the time complexity would be O(rows * cols * m * 4^m). Since mostly m << n, using a trie would save lots of time. 
+Now let's analyze the time complexity of using a Trie. 
+We put each word into the trie. Search in the Trie takes O(m) time, so the time complexity would be O(rows * cols * m * 4^m). 
+Since mostly m << n, using a trie would save lots of time. 
 */
 
 public class Solution {
