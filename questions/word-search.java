@@ -24,15 +24,17 @@ public boolean exist(char[][] board, String word) {
     if (board == null || word == null) {
             return true;
     }
-    int m = board.length;
-    int n = board[0].length;
-    boolean[][] visited = new boolean[rows][cols];
+    int m = board.length; // rows
+    int n = board[0].length; // cols
+  
+    boolean[][] visited = new boolean[m][n];
     
     
     boolean result = false;
+  
     for(int i=0; i<m; i++){
         for(int j=0; j<n; j++){
-           if(dfs(board,word,i,j,0, visited)){
+           if(dfs(board,word,i,j,0, visited)){ // First we have to find the first letter to start, which gives time O(N^2)
                result = true;
            }
         }
@@ -51,14 +53,17 @@ public boolean dfs(char[][] board, String word, int i, int j, int k, boolean[][]
         return false;
     }
     
-    if (visited[row][col]) {
-            return false;
-        }
+    // check if visited
+    if (visited[i][j]) {
+      return false;
+    }
     
+  // if letter not found return   
     if(board[i][j] != word.charAt(k)){
       return false;
     }
  
+  // if a match exists 
     visited[i][j] = true;
     
     if(   dfs(board, word, i-1, j, k+1, visited)
