@@ -17,14 +17,14 @@ public class Solution {
         ListNode prev = null;
 
         while(cur != null){
-            ListNode next = cur.next;
+            ListNode temp = cur.next;
             cur.next = prev;
             prev = cur;
-            cur = next;
+            cur = temp;
 
         }
-        head = prev;
-        return head;
+        
+        return prev;
     }
 
 
@@ -37,8 +37,11 @@ public class Solution {
         ListNode second = head.next;
         //set first's next to be null
         head.next = null;
-
+        
+        //recursuvely call with second node
         ListNode rest = reverseListRecursive(second);
+        
+        // set second's next to head
         second.next = head;
 
         return rest;
