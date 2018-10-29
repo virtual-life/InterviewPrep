@@ -8,6 +8,9 @@ import java.util.List;
  pop() -- Removes the element on top of the stack.
  top() -- Get the top element.
  getMin() -- Retrieve the minimum element in the stack.
+ 
+ Time - O(1)
+ Space - O(n) extra space
 
  */
 
@@ -38,4 +41,10 @@ public class MinStack {
         return min.get(min.size() - 1);
     }
 }
+
+/*
+Time - O(1) 
+Space  - O(1)
+https://www.geeksforgeeks.org/design-a-stack-that-supports-getmin-in-o1-time-and-o1-extra-space/
+*/
 
