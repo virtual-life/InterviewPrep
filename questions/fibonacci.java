@@ -4,7 +4,7 @@ Write a method fib() that takes an integer nn and returns the nnth Fibonacci ↴
 */
 
 // Recursion
-
+// Time - O(2^n)
 
 public static int fib(int n) {
     if (n == 0 || n == 1) {
