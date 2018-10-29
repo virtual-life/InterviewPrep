@@ -79,4 +79,3 @@ for coin = 5:
  r              a
 final answer: 3
 */
-Contact GitHub API Training Shop Blog About
