@@ -1,6 +1,6 @@
 /*
 
-/**
+
  * // This is the interface that allows for creating nested lists.
  * // You should not implement it, or speculate about its implementation
  * public interface NestedInteger {
@@ -27,7 +27,7 @@
  *     // Return null if this NestedInteger holds a single integer
  *     public List<NestedInteger> getList();
  * }
- */
+
 
 Given a nested list of integers, return the sum of all integers in the list weighted by their depth.
 
@@ -90,10 +90,12 @@ Explanation: One 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1*3 + 4*2
 import java.lang.*;
 
 class Solution {
+    
     public int depthSumInverse(List<NestedInteger> nestedList) {
         HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();
         int maxDepth = 1;
-        maxDepth = depthSum(nestedList,1,map,maxDepth);
+        int depth = 1;
+        maxDepth = depthSum(nestedList,depth,map,maxDepth); 
         int sum = 0;
         
         for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
@@ -106,14 +108,15 @@ class Solution {
     public int depthSum(List<NestedInteger> nestedList, int depth, HashMap<Integer,Integer> map, int maxDepth){
         for(NestedInteger ni : nestedList){
             if(ni.isInteger()){
-                
+             
                 if(map.get(depth) != null){
                     map.put(depth, map.get(depth) + ni.getInteger());
                 }else{
                     maxDepth = Math.max(maxDepth, depth);
                     map.put(depth, ni.getInteger());
                 }
-            }else{
+                
+            }else{ // if a list 
                 maxDepth = depthSum(ni.getList(), depth+1, map, maxDepth);
             }
         }
