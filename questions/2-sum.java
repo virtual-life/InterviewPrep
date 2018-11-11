@@ -50,10 +50,10 @@ class Solution2Sum {
         int j = numbers.length - 1;
 
         while (i < j) {
-            int x = numbers[i] + numbers[j];
-            if (x < target) {
-                ++i;
-            } else if (x > target) {
+            int sum = numbers[i] + numbers[j];
+            if (sum < target) {
+                i++;
+            } else if (sum > target) {
                 j--;
             } else {
                 return new int[] { i + 1, j + 1 };
@@ -81,6 +81,7 @@ class Solution2Sum {
 
     private HashMap<Integer, Integer> elements = new HashMap<Integer, Integer>();
 
+    // map stores frequency of occureences of a given number 
     public void add(int number) {
         if (elements.containsKey(number)) {
             elements.put(number, elements.get(number) + 1);
