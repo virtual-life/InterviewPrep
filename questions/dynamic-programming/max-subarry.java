@@ -35,3 +35,38 @@ public class Solution {
         return max;
     }
 }
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        
+        if(nums== null || nums.length <1 ){
+            return -1;
+        }
+        int maxSum = Integer.MIN_VALUE;
+        int sum = 0;
+        int startIndex=0;
+        int length=0;
+    
+  
+        for (int i = 0; i < nums.length; i++) {             
+            sum = sum + nums[i]; 
+            
+            if (sum > maxSum){
+                maxSum = sum;
+                length++;
+            } 
+            
+            if (sum < 0) {
+                sum = 0; 
+                startIndex = i+1;
+                length =1;
+                
+            }            
+               
+        } 
+        System.out.println("StartIndex "+ startIndex);
+        System.out.println("Length "+ length);
+        return maxSum; 
+        
+    }    
+}
