@@ -38,16 +38,12 @@ public class Solution {
 
 class Solution {
     public int maxSubArray(int[] nums) {
-        
-        if(nums== null || nums.length <1 ){
-            return -1;
-        }
+       
         int maxSum = Integer.MIN_VALUE;
         int sum = 0;
         int startIndex=0;
         int length=0;
-    
-  
+      
         for (int i = 0; i < nums.length; i++) {             
             sum = sum + nums[i]; 
             
