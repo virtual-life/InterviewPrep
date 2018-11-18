@@ -102,5 +102,45 @@ public class Solution{
       }
  }
  
+ 
+ // merge two arrays:
+ 
+ public static int[] mergeArrays(int[] arr1, int[] arr2) {
+
+    // set up our mergedArray
+    int[] result = new int[arr1.length + arr2.length];
+
+    int i = 0;
+    int j = 0;
+    int k = 0;
+
+    while (k < result.length) {
+
+        boolean arr1Exhausted = i >= arr1.length;
+        boolean arr2Exhausted = j >= arr2.length;
+
+        // case: next comes from my array
+        // my array must not be exhausted, and EITHER:
+        // 1) Alice's array IS exhausted, or
+        // 2) the current element in my array is less
+        //    than the current element in Alice's array
+     
+        if (!arr1Exhausted && (arr2Exhausted || (arr2[i] < arr2[j]) ) ) {
+
+            result[k] = arr1[i];
+            i++;
+
+        // case: next comes from Alice's array
+        } else {
+            result[k] = arr2[j];
+            j++;
+        }
+
+        k++;
+    }
+
+    return result;
+}
+ 
 }
 
