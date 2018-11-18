@@ -81,6 +81,8 @@ public class Solution{
      }
      return result;
  }
+}
+ 
  
   public static class HeapItem implements Comparable<HeapItem>{               
       int[] array;                
@@ -142,5 +144,4 @@ public class Solution{
     return result;
 }
  
-}
 
