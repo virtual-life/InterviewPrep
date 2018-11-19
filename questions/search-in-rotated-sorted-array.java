@@ -52,7 +52,8 @@ public int search(int[] nums, int target) {
         int mid = (left + right)/2;
         if(target==nums[mid])
             return mid;
- 
+       
+       //compare mid with left 
         if(nums[left]<=nums[mid]){
             if(nums[left]<=target&& target<nums[mid]){
                 right=mid-1;
