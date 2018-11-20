@@ -19,6 +19,8 @@ Note:
 -100.0 < x < 100.0
 n is a 32-bit signed integer, within the range [−231, 231 − 1]
 
+https://www.geeksforgeeks.org/write-a-c-program-to-calculate-powxn/
+
 Time - O(log N )  - Divide and conquer 
 
 */
