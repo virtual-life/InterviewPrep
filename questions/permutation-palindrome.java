@@ -29,8 +29,8 @@ public class Solution {
          
         int tolerance = 0;
         
-        for(Map.Entry<> entry: map.entrySet()){
-            if(map.getValue() % 2!= 0){
+        for(Map.Entry<Character, Integer> entry: map.entrySet()){
+            if(entry.getValue() % 2!= 0){
                 tolerance++;
             }    
         }    
