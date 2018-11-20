@@ -23,7 +23,16 @@ n is a 32-bit signed integer, within the range [−231, 231 − 1]
 
 
 public class Solution {
-    public double power(double x, int n) {
+    
+  public double myPow(double x, int n) {
+	if (n < 0) {
+		return 1 / power(x, n);
+	} else {
+		return power(x, n);
+	}
+  }
+
+  public double power(double x, int n) {
 	if (n == 0)
 		return 1;
  
@@ -34,13 +43,6 @@ public class Solution {
 	} else {
 		return v * v * x;
 	}
-}
- 
-public double myPow(double x, int n) {
-	if (n < 0) {
-		return 1 / power(x, n);
-	} else {
-		return power(x, n);
-	}
-}
+   }
+	
 }
