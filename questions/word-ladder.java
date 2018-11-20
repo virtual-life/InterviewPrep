@@ -130,10 +130,10 @@ public class Solution {
                     //nothing
                     ArrayList<String> temp = new ArrayList<String>();
                     temp.add(top.word);
-                    while(top.pre !=null){
+                    while(top.prev !=null){
                         // add to begining of the list 
-                        temp.add(0, top.pre.word);
-                        top = top.pre;
+                        temp.add(0, top.prev.word);
+                        top = top.prev;
                     }
                     result.add(temp);
                     continue;
