@@ -18,6 +18,8 @@ Return 0 if there is no such transformation sequence.
 All words have the same length.
 All words contain only lowercase alphabetic characters.
 
+https://www.programcreek.com/2012/12/leetcode-word-ladder/
+
  Time - O(n * length of string )  - BFS
 
  */
@@ -108,11 +110,11 @@ public class Solution {
 
         HashSet<String> visited = new HashSet<String>();
         HashSet<String> unvisited = new HashSet<String>();
-        unvisited.addAll(dict);
+     
+        unvisited.addAll(dict); // add all dict words to unvisited 
 
         int minStep = 0;
         int preNumSteps = 0;
-
 
 
         while(!queue.isEmpty()){
@@ -141,6 +143,7 @@ public class Solution {
 
             }
 
+           // The used word is only removed when steps change. BFS traverse every level 
             if(preNumSteps < currNumSteps){
                 unvisited.removeAll(visited);
             }
