@@ -19,6 +19,8 @@ Note:
 -100.0 < x < 100.0
 n is a 32-bit signed integer, within the range [−231, 231 − 1]
 
+Time - O(log N )  - Divide and conquer 
+
 */
 
 
@@ -37,6 +39,9 @@ public class Solution {
 		return 1;
  
 	double v = power(x, n / 2);
+	  
+	// if instead power(x, n / 2) was calculated every time runtime would be O( N)
+	// return power(x, n / 2) * power(x, n / 2)
  
 	if (n % 2 == 0) {
 		return v * v;
