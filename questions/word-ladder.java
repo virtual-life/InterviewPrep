@@ -99,23 +99,25 @@ public class Solution {
         }
     }
 
-    public List<List<String>> printLadder(String beginWord, String endWord, Set<String> wordDict) {
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+       
+        Set dict = new HashSet(wordList);
 
         List<List<String>> result = new ArrayList<List<String>>();
+       
+       if (!dict.contains(endWord)) return result; // if endWord not in dict then return
 
-        Queue<WordNode> queue = new LinkedList<WordNode>();
+        Queue<WordNodeLadder> queue = new LinkedList<WordNodeLadder>();
         queue.add(new WordNodeLadder(beginWord, 1, null));
 
-        wordDict.add(endWord);
+        dict.add(endWord);
 
         HashSet<String> visited = new HashSet<String>();
         HashSet<String> unvisited = new HashSet<String>();
      
         unvisited.addAll(dict); // add all dict words to unvisited 
 
-        int minStep = 0;
         int preNumSteps = 0;
-
 
         while(!queue.isEmpty()){
             WordNodeLadder top = queue.remove();
@@ -124,23 +126,17 @@ public class Solution {
 
             // if its the endWord 
             if(word.equals(endWord)){
-                if(minStep == 0){
-                    minStep = top.numSteps;
+                
+                ArrayList<String> temp = new ArrayList<String>();
+                temp.add(top.word);
+                while(top.prev !=null){
+                    // add to begining of the list 
+                    temp.add(0, top.prev.word);
+                    top = top.prev;
                 }
-
-                if(top.numSteps == minStep && minStep !=0){
-                    //nothing
-                    ArrayList<String> temp = new ArrayList<String>();
-                    temp.add(top.word);
-                    while(top.prev !=null){
-                        // add to begining of the list 
-                        temp.add(0, top.prev.word);
-                        top = top.prev;
-                    }
-                    result.add(temp);
-                    continue;
-                }
-
+                result.add(temp);
+                continue;
+                
             }
 
            // The used word is only removed when steps change. BFS traverse every level 
