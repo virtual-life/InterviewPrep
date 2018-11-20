@@ -12,17 +12,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Solution{
-
+	
 	public static void findFrequency(int[] A, int left, int right, Map<Integer, Integer> freq){
-  
+  		
 		if (left > right) {
 			return;
 		}
 
 		// if every element in the sub-array A[left..right] is equal,
 		// then increment the element count by n
-		if (A[left] == A[right])
-		{
+		if (A[left] == A[right]){
+			
 			Integer count = freq.get(A[left]);
 			if (count == null) {
 				count = 0;
@@ -50,3 +50,24 @@ class Solution{
 		System.out.println(freq);
 	}
 }
+
+public static void findFrequency(int[] arr, int left, int right, int target, int count){
+  		
+		if (left > right) {
+			return;
+		}
+
+		// if every element in the sub-array A[left..right] is equal,
+		// then increment the element count by n
+		if (target == arr[left] && arr[left] == arr[right]){		
+			count++;
+			return;
+		}
+
+		int mid = (left + right)/2;
+
+		// divide array into left and right sub-array and recurse
+		findFrequency(arr, left, mid, target,count);
+		findFrequency(arr, mid + 1, right, target,count);
+}
+
