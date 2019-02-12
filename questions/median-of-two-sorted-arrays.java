@@ -82,7 +82,7 @@ public class Solution {
          *
          */
         else {
-            if ((n1mid + n2mid + 1) >= k) {
+            if ((mid1 + mid2 + 1) >= k) {
                 return findMedianHelper(nums1, Arrays.copyOfRange(nums2, 0, mid2), k);
             } else {
                 return findMedianHelper(Arrays.copyOfRange(nums1, mid1 + 1, nums1.length), nums2, k - (mid1 + 1));
