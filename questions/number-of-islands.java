@@ -21,7 +21,8 @@ Example 2:
 00011
 Answer: 3
 
-O(rows*column) - DFS
+Time - O(rows*column) - DFS
+Space -  worst case O(rows*column) in case that the grid map is filled with lands where DFS goes by (row * column) deep.
 
  */
 
