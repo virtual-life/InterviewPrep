@@ -26,6 +26,38 @@ Then the hours are t / 60, the minutes are t % 60, and each digit of the hours a
 // Time Complexity: O(1). We try up to 24 * 60 possible times until we find the correct time.
 // Space Complexity: O (1) 
 
+
+public String nextClosestTime(String time) {
+        int n=time.length();
+        char[]res=time.toCharArray();
+        TreeSet<Integer> set=new TreeSet<>();
+        // Add the elements into the treeset
+        for(char c:res){
+            if(c!=':'){
+               set.add(c-'0');
+            } 
+        }
+        for(int i=n-1;i>=0;i--){
+            char c=time.charAt(i);
+            int curDigit=c-'0';
+            if(c==':'){
+                continue;
+            }
+            Integer ceil = set.ceiling(curDigit+1); // returns the least element in this set greater than or equal to the given element or null
+            
+            if(ceil==null||(i==3&&ceil>5)||(i==0&&ceil>2)||(res[0]=='2'&&i==1&&ceil>4)){
+                res[i]=(char)(set.first()+'0'); // gets the smalles element in the set 
+            }
+            
+            else{
+                res[i]=(char)(ceil+'0');
+                return String.valueOf(res);
+            }
+        }
+        return String.valueOf(res);
+    }
+
+
 class Solution {
     public String nextClosestTime(String time) {
         int cur = 60 * Integer.parseInt(time.substring(0, 2));
