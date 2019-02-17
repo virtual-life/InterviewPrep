@@ -17,6 +17,9 @@ queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ].
 The input is always valid. You may assume that evaluating the queries will result in no division by zero and there is no contradiction.
 
 
+https://zxi.mytechroad.com/blog/graph/leetcode-399-evaluate-division/
+
+
 Using Union Find Algo 
 
 Time - O(n)
