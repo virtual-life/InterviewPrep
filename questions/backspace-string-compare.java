@@ -53,8 +53,8 @@ class Solution {
 
         // start to compare string from the end
         while (s >= 0 && t >= 0) {
-            s = nextNonSkipChar(S, s);
-            t = nextNonSkipChar(T, t);
+            s = nextNonSkipCharPosition(S, s);
+            t = nextNonSkipCharPosition(T, t);
 
             // in case any of two string is already exhausted
             if (s < 0 || t < 0) break;
@@ -69,8 +69,8 @@ class Solution {
 
         // if any of two string is not exhausted yet,
         // check to see if it can be exhausted
-        if (s >= 0) s = nextNonSkipChar(S, s);
-        if (t >= 0) t = nextNonSkipChar(T, t);
+        if (s >= 0) s = nextNonSkipCharPosition(S, s);
+        if (t >= 0) t = nextNonSkipCharPosition(T, t);
 
         // check two see if both string has been exhausted
         return s < 0 && t < 0;
@@ -80,7 +80,7 @@ class Solution {
     helper method to find the next unskippable character in the string and return
     its index. Return -1 if the string is exhausted.
      */
-    private int nextNonSkipChar(String str, int s) {
+    private int nextNonSkipCharPosition(String str, int s) {
         int skip = 0;
         while (s >= 0) {
             // if current char is #, we need to skip next character
@@ -95,7 +95,8 @@ class Solution {
                 s--;
             }
             // in case this is the character we cannot skip
-            else break;
+            else 
+                break;
         }
         return s;
     }
