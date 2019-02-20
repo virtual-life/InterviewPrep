@@ -52,8 +52,11 @@ public class Solution {
 
 /*
 
-Would the program always work if the fast runner moves three steps every time the slow runner moves one step?
-What if instead of a simple linked list, you had a structure where each node could have several "next" nodes? 
+1. Would the program always work if the fast runner moves three steps every time the slow runner moves one step?
+
+2. What if instead of a simple linked list, you had a structure where each node could have several "next" nodes? 
 This data structure is called a "directed graph." How would you test if your directed graph had a cycle?
+
+Check course schedule problem 
 
 */
