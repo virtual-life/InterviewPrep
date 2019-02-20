@@ -33,6 +33,28 @@ public class Solution {
     }
 }
 
+public class Solution {
+    public int rob(int[] nums) {
+        
+    if(nums==null||nums.length==0)
+        return 0;
+ 
+    if(nums.length==1)
+        return nums[0];
+ 
+    int[] dp = new int[nums.length];
+        
+    dp[0]=nums[0]; // number of way of robbing 0 
+    dp[1]=Math.max(nums[0], nums[1]); // first house is either picked or not 
+ 
+    for(int i=2; i<nums.length; i++){
+        dp[i] = Math.max(dp[i-2]+nums[i], dp[i-1]); // (cur + one before last) or previous 
+    }
+ 
+    return dp[nums.length-1]; // dp[n-1]
+}
+}    
+
 /**
 After robbing those houses on that street, the thief has found himself a new place for his thievery so that he will not get too much attention. 
 This time, all houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, the security system for these houses remain the same as for those in the previous street.
@@ -55,10 +77,12 @@ public class Solution {
     
     public int rob(int[] nums, int offset) {
         
-        if( offset + 1 >= nums.length ){
-            return offset >= nums.length? 0 : nums[offset]; 
-        }
-        
+        if(nums==null||nums.length==0)
+            return 0;
+ 
+        if(offset == nums.length)
+            return nums[offset];
+   
         int a = nums[offset];        
         int b = Math.max(nums[offset], nums[offset + 1]);
        
@@ -75,8 +99,8 @@ public class Solution {
 
 /**
 The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." 
-Besides the root, each house has one and only one parent house. A
-fter a tour, the smart thief realized that "all houses in this place forms a binary tree". 
+Besides the root, each house has one and only one parent house. 
+After a tour, the smart thief realized that "all houses in this place forms a binary tree". 
 It will automatically contact the police if two directly-linked houses were broken into on the same night.
 
 Determine the maximum amount of money the thief can rob tonight without alerting the police.
