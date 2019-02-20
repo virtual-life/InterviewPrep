@@ -57,9 +57,8 @@ public class Solution {
 
     public static String printLCS(int[][] dp, int m , int n, String a, String b){
 
-        int index = dp[m][n];
-
         // Create a character array to store the lcs string
+        int index = dp[m][n];
         char[] ch = new char[index];
 
         // Start from the right-most-bottom-most corner and
