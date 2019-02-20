@@ -91,7 +91,7 @@ public class Solution {
         }
 
         // mark node as visited 
-        visited[vertexId] = true;
+        visited[vertexId] = true; // this is equivalent to pushing the element on the stack for dfs
 
         List<Integer> neighbors = adjList.get(vertexId);
         if (neighbors != null) {
@@ -102,7 +102,7 @@ public class Solution {
             }
         }
         // reset node 
-        visited[vertexId] = false;
+        visited[vertexId] = false;  // this is equivalent to popping the element on the stack for dfs
 
         return false;
     }
