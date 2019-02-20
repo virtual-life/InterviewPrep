@@ -15,7 +15,23 @@
 
  */
 
+// Recursive - overlapping sub problems 
+// Time - O(2^n) in worst case and worst case happens when all characters of X and Y mismatch i.e., length of LCS is 0.
+
+ public int lcs(String a, String b, int aLen, int bLen) { 
+  
+    if (aLen == 0 || bLen == 0) 
+      return 0; 
+  
+    if (a.charAt(aLen -1) == b.charAt(bLen -1)) // checking if last character is the same
+      return 1 + lcs(a, b, aLen-1, bLen-1); 
+    else
+      return Math.max(lcs(X, Y, aLen, bLen-1), lcs(X, Y, aLen-1, bLen)); 
+} 
+
+
 // dp[i][j] - LCS of 2 strings of length i and j 
+// Time - O(mn) 
 
 public class Solution {
     public static int getLongestCommonSubsequence(String a, String b){
