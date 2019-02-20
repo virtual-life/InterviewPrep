@@ -13,10 +13,15 @@
  
  LCS(“ABCDGH”, “AEDFHR”) = MAX ( LCS(“ABCDG”, “AEDFHR”), LCS(“ABCDGH”, “AEDFH”) )
 
+This is basically the priciple behind diff or vimdiff 
+
  */
 
-// Recursive - overlapping sub problems 
-// Time - O(2^n) in worst case and worst case happens when all characters of X and Y mismatch i.e., length of LCS is 0.
+/*
+ Recursive - overlapping sub problems 
+ Time - O(2^n) in worst case and worst case happens when all characters of X and Y mismatch i.e., length of LCS is 0.
+
+*/
 
  public int lcs(String a, String b, int aLen, int bLen) { 
   
