@@ -1,7 +1,8 @@
 /*
 Implement atoi which converts a string to an integer.
 
-The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
+The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. 
+Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
 
 The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
 
@@ -17,6 +18,7 @@ Example 1:
 
 Input: "42"
 Output: 42
+
 Example 2:
 
 Input: "   -42"
