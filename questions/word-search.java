@@ -43,10 +43,11 @@ public boolean exist(char[][] board, String word) {
     return result;
 }
  
+// checking if a cycle exists 
 public boolean dfs(char[][] board, String word, int i, int j, int k, boolean[][] visited){
 
     if(k==word.length()){
-            return true;
+        return true;
     } 
                 
     if(i<0 || j<0 || i>=board.length || j>=board[0].length){
@@ -69,12 +70,13 @@ public boolean dfs(char[][] board, String word, int i, int j, int k, boolean[][]
     if(   dfs(board, word, i-1, j, k+1, visited)
         ||dfs(board, word, i+1, j, k+1, visited)
         ||dfs(board, word, i, j-1, k+1, visited)
-        ||dfs(board, word, i, j+1, k+1, visited)){
+        ||dfs(board, word, i, j+1, k+1, visited))
+    {
             return true;
      }
      
-        visited[i][j]=false;;
-    }
+   visited[i][j]=false;;
+
  
     return false;
 }
