@@ -13,7 +13,8 @@ word = "SEE", -> returns true,
 word = "ABCB", -> returns false.
 
 Understand the problem:
-The problem asks for if a Word exists in the board, where the word can be constructed from letters of sequentially adjacent cell. Note that the same letter cell may not be used more than once, which means the solution cannot contain a circle. 
+The problem asks for if a Word exists in the board, where the word can be constructed from letters of sequentially adjacent cell. 
+Note that the same letter cell may not be used more than once, which means the solution cannot contain a cycle. 
 
 Time - O(N^2 * 4^k) First we have to find the first letter to start, which gives time O(N^2), then for each search step it has 2~4 neighbours to go, and it has k steps, where k is the length of the word to be searched.
 */
