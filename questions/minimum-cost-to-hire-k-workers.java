@@ -38,7 +38,8 @@ Observation 1: Let G the paid group satisfying the above conditions that has the
 
 Observation 2: Given the condition 1, only the the total quality and the wage/quality ratio matters.
 
-Observation 3: given the condition 2, only the highest wage/quality ratio in the group matters because otherwise, the wage calculated with other ratio will be less than the minimum wage of the worker that has the highest wage/quality ratio.
+Observation 3: given the condition 2, only the highest wage/quality ratio in the group matters because otherwise, 
+the wage calculated with other ratio will be less than the minimum wage of the worker that has the highest wage/quality ratio.
 
 Now combine all the observations above, we can come up with the following solution: we first calculate the wage/quality ratio of each worker and sort them in a decreasing order. Then we process each worker one-by-one. We pick the the worker with the highest ratio and add him to the group. If the size of the group is less than K, we need to add more workers to the group. Because we start with the worker with the highest ratio (this is the ratio part in the observation 2), when we add other worker to the group, we just need to select the one that has the minimum quality (this is the total quality part in the observation 2). After we construct the group, we calculate the total cost and update the record of the minimum cost.  Finally, we will remove this worker with the highest ratio from the group and process the worker that has the second largest ratio and we repeat this process.
 
