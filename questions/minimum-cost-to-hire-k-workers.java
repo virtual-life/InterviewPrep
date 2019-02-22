@@ -43,12 +43,41 @@ Observation 3: given the condition 2, only the highest wage/quality ratio in the
 Now combine all the observations above, we can come up with the following solution: we first calculate the wage/quality ratio of each worker and sort them in a decreasing order. Then we process each worker one-by-one. We pick the the worker with the highest ratio and add him to the group. If the size of the group is less than K, we need to add more workers to the group. Because we start with the worker with the highest ratio (this is the ratio part in the observation 2), when we add other worker to the group, we just need to select the one that has the minimum quality (this is the total quality part in the observation 2). After we construct the group, we calculate the total cost and update the record of the minimum cost.  Finally, we will remove this worker with the highest ratio from the group and process the worker that has the second largest ratio and we repeat this process.
 
 
+https://leetcode.com/problems/minimum-cost-to-hire-k-workers/discuss/141768/Detailed-explanation-O(NlogN)
+
+"1. Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group."
+So for any two workers in the paid group,
+we have wage[i] : wage[j] = quality[i] : quality[j]
+So we have wage[i] : quality[i] = wage[j] : quality[j]
+We pay wage to every worker in the group with the same ratio compared to his own quality.
+
+"2. Every worker in the paid group must be paid at least their minimum wage expectation."
+For every worker, he has an expected ratio of wage compared to his quality.
+
+So to minimize the total wage, we want a small ratio.
+So we sort all workers with their expected ratio, and pick up K first worker.
+Now we have a minimum possible ratio for K worker and we their total quality.
+
+As we pick up next worker with bigger ratio, we increase the ratio for whole group.
+Meanwhile we remove a worker with highest quality so that we keep K workers in the group.
+We calculate the current ratio * total quality = total wage for this group.
+
+We redo the process and we can find the minimum total wage.
+Because workers are sorted by ratio of wage/quality.
+For every ratio, we find the minimum possible total quality of K workers.
+
+Time Complexity
+O(NlogN) for sort.
+O(NlogK) for priority queue.
+
+
+
 Time Complexity: O(NlogN), where N is the number of workers.
 
 Space Complexity: O(N). 
 */
 
-// Maintain a max heap of quality. (We're using a minheap, with negative values.) 
+
 // We'll also maintain sumq, the sum of this heap.
 
 
@@ -61,15 +90,18 @@ class Solution {
             workers[i] = new Worker(quality[i], wage[i]);
         Arrays.sort(workers); // Sort by wage/quality ratop 
 
-        double ans = 1e9;
-        int sumq = 0;
-        PriorityQueue<Integer> pool = new PriorityQueue();
+        double ans = Double.MAX_VALUE;
+        int sumq = 0; // maintains total quality 
+        PriorityQueue<Integer> pq = new PriorityQueue();
         for (Worker worker: workers) {
-            pool.offer(-worker.quality);
-            sumq += worker.quality;
-            if (pool.size() > K)
-                sumq += pool.poll();
-            if (pool.size() == K)
+         
+            pq.offer(-worker.quality); // Maintain a max heap of quality. (We're using a minheap, with negative values.) 
+            sumq = sumq + worker.quality;
+         
+            if (pq.size() > K)
+                sumq += pq.poll(); // subtract the quality of teh removed worker 
+         
+            if (pq.size() == K)
                 ans = Math.min(ans, sumq * worker.ratio());
         }
 
