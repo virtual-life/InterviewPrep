@@ -74,6 +74,14 @@ public int search(int[] nums, int target) {
 
 
 // WIth duplicates 
+/*
+Input: nums = [2,5,6,0,0,1,2], target = 0
+Output: true
+
+Input: nums = [2,5,6,0,0,1,2], target = 3
+Output: false
+
+*/
 
 public boolean search(int[] nums, int target) {
     int left=0;
