@@ -24,13 +24,14 @@ A = 3, B = 4
 /**
 Let the given array be
 int arr[] = {1, 5, 3, 4, 1, 2};
+
 Let us take XOR of all the elements in the array
-
 xor = arr[0] ^ arr[1] ^ arr[2] ^ arr[3] ^ arr[4] ^ arr[5];
-Now xor all the elements from 1 to n with the above xor
 
+Now xor all the elements from 1 to n with the above xor
 xor = xor ^ 1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6;
-The final alue in the xor (after above operations) will be the XOR of the missing number (i.e 6) and repeating number (i.e 1). All other elements will nullify themselves.
+
+The final value in the xor (after above operations) will be the XOR of the missing number (i.e 6) and repeating number (i.e 1). All other elements will nullify themselves.
 
 Lets call the  
 x - missing number 
