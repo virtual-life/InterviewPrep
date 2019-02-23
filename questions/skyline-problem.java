@@ -29,51 +29,46 @@ public class Solution {
 	        // start point has negative height value
 		    Edge startEdge = new Edge(building[0], -building[2]);
 		    edges.add(startEdge);
-		    // end point has normal height value
+		 // end point has normal height value
 		    Edge endEdge = new Edge(building[1], building[2]);
 		    edges.add(endEdge);
 	    }
  
-	    // sort height, based on the first value, if necessary, use the second to
-        // break ties 
+	    // sort height, based on the first value, if necessary, use the second to break ties 
 	    Collections.sort(edges, new Comparator<Edge>() {
 		    public int compare(Edge a, Edge b) {
 			    if (a.x != b.x)
 				    return Integer.compare(a.x, b.x);
- 
+			    
+ 			    // compare the heights if they are both start or end edges , 
 			    return Integer.compare(a.height, b.height);
 		    }
 	    });
- 
- 
-        TreeMap<Integer, Integer> heightMap = new TreeMap<Integer, Integer>(Collections.reverseOrder());
-        // Before starting, the previous max height is 0;
-        heightMap.put(0,1);
-        int prev = 0;
-        for (Edge edge : edges) {
-            if (edge.height < 0) { 
-                Integer cnt = heightMap.get(-edge.height);
-                if(cnt == null){
-                    cnt = 1;
-                }else{
-                    cnt = cnt + 1;
-                }
-			    heightMap.put(-edge.height,cnt);
-			    
-            } else {  
-                Integer cnt = heightMap.get(edge.height);
-                if(cnt == 1){
-                    heightMap.remove(edge.height);
-                }else{
-                    heightMap.put(edge.height, cnt - 1);
-                }
-            }
-            int cur =  heightMap.firstKey();
-            if(prev != cur){
-                result.add(new int[]{edge.x,cur});
-                prev = cur;
-            }
+	
+    // Use a maxHeap to store possible heights
+    PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Collections.reverseOrder()); // The Collections.reverseOrder() provides a Comparator that would sort the elements in the PriorityQueue in a the oposite order to their natural order in this case.    
+
+    // Provide a initial value to make it more consistent
+    pq.offer(0); // initial max height is 0 
+
+    // Before starting, the previous max height is 0;
+    int prev = 0;
+
+    // visit all points in order
+    for(Edge edge : edges) {
+        if(edge.height < 0) { // if its a start point, add height
+            pq.offer(-edge.height);
+        } else {  // a end point, remove height
+            pq.remove(edge.height);
         }
-	return result; 
+        int cur = pq.peek(); // current max height;
+  
+        // compare current max height with previous max height, update result and 
+        // previous max height if necessary
+        if(prev != cur) {
+            result.add(new int[]{edge.x,cur});
+            prev = cur;
+        }
     }
+    return result;
 }
