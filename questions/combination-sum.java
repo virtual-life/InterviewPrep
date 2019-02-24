@@ -14,6 +14,8 @@ Time - O((n+k)!) where n is the size of candidates,
       and k is the max repeated times for each candidates
 Space - O(m) where m is the size of array for the solution.
 
+This is basically a backtraking solution 
+
 */
 
 public class Solution {
@@ -27,18 +29,18 @@ public class Solution {
         return result;        
     }
     
-    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> list, int curIndex, int target) {
+    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> temp, int start, int target) {
         if (target == 0) {
-            result.add(new ArrayList<Integer>(list));
+            result.add(new ArrayList<Integer>(temp));
             return;
         }
         
-        for (int i = curIndex; i < candidates.length; i++) {
+        for (int i = start; i < candidates.length; i++) {
               
             if(candidates[i] <= target ){     
-                list.add(candidates[i]);
-                helper(candidates, result, list, i, target - candidates[i]);
-                list.remove(list.size() - 1); 
+                temp.add(candidates[i]);
+                helper(candidates, result, temp, i, target - candidates[i]);
+                temp.remove(temp.size() - 1); 
             }                  
         }
     }
@@ -59,19 +61,19 @@ public class Solution {
         return result;        
     }
     
-    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> list, int curIndex, int target) {
+    private void helper(int[] candidates, List<List<Integer>> result, ArrayList<Integer> temp, int start, int target) {
         if (target == 0) {
-            result.add(new ArrayList<Integer>(list));
+            result.add(new ArrayList<Integer>(temp));
             return;
         }
         
         int prev=-1;
-        for (int i = curIndex; i < candidates.length; i++) {
+        for (int i = start; i < candidates.length; i++) {
               
             if(candidates[i] <= target && prev!=candidates[i]){     
-                list.add(candidates[i]);
-                helper(candidates, result, list, i, target - candidates[i]);
-                list.remove(list.size() - 1);
+                temp.add(candidates[i]);
+                helper(candidates, result, temp, i, target - candidates[i]);
+                temp.remove(temp.size() - 1);
                 prev=candidates[i];  
             }                  
         }
