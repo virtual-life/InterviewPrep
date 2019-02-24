@@ -31,15 +31,20 @@ Time - O(E*V )
 /**
  * Definition for undirected graph.
  * class GraphNode {
- *     int label;
+ *
+ *     int value;
  *     List<GraphNode> neighbors;
- *     GraphNode(int x) { label = x; neighbors = new ArrayList<GraphNode>(); }
+ * 
+ *     GraphNode(int x) {
+ *       value = x; 
+ *       neighbors = new ArrayList<GraphNode>(); 
+ *     }
  * };
  */
 
 /**
 
-a queue is used to do breath first traversal,
+a queue is used to do BFS
 and a map is used to store the visited nodes. It is the map between original node and copied node.
 
 */
@@ -51,10 +56,10 @@ public GraphNode cloneGraph(GraphNode node) {
  
     Queue<GraphNode> queue = new LinkedList<GraphNode>();
  
-    HashMap<GraphNode,GraphNode> map = new HashMap<GraphNode,GraphNode>();
+    HashMap<GraphNode,GraphNode> map = new HashMap<GraphNode,GraphNode>(); // <OriginalNode, CopiedNode>
  
     queue.add(node);
-    GraphNode newNodeCopy = new GraphNode(node.label);
+    GraphNode newNodeCopy = new GraphNode(node.value);
     map.put(node, newNodeCopy);
  
     while(!queue.isEmpty()){
@@ -63,9 +68,9 @@ public GraphNode cloneGraph(GraphNode node) {
  
         for(GraphNode aNeighbor: currNeighbors){
             if(!map.containsKey(aNeighbor)){
-                GraphNode copy = new GraphNode(aNeighbor.label);
-                map.put(aNeighbor,copy);
-                map.get(curr).neighbors.add(copy);
+                GraphNode copy = new GraphNode(aNeighbor.value);
+                map.put(aNeighbor,copy);      // add copy to map 
+                map.get(curr).neighbors.add(copy);  // 
                 queue.add(aNeighbor);
             }else{
                 // add neighbor's value to curr's neighbor's
