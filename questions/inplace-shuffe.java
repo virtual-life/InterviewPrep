@@ -16,7 +16,7 @@ Space - O(1)
 We choose a random item to move to the first index, then we choose a random other item to move to the second index, etc. 
 We "place" an item in an index by swapping it with the item currently at that index.
 Crucially, once an item is placed at an index it can't be moved. 
-So for the first index we choose from nn items, for the second index we choose from n-1n−1 items, etc.
+So for the first index we choose from n items, for the second index we choose from n-1 items, etc.
 
 */
 
