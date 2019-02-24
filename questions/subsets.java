@@ -75,6 +75,8 @@ private void backtrack(List<List<Integer>> result , List<Integer> temp, int [] n
     result.add(new ArrayList<>(temp));
  
     for(int i = start; i < nums.length; i++){
+        if(i > start && nums[i] == nums[i-1]) // skip duplicates if set contains it 
+             continue; 
         temp.add(nums[i]);
         backtrack(result, temp, nums, i + 1);
         temp.remove(temp.size() - 1);
