@@ -68,3 +68,30 @@ What if we wanted the highest product of 4 items?
 What if we wanted the highest product of k items?   - http://www.geeksforgeeks.org/largest-product-subarray-size-k/
 If our highest product is really big, it could overflow ↴ . How should we protect against this? - BigInteger or Long 
 */
+
+
+ // Function returns maximum product of a subarray 
+    // of size k in given arrar, arr[0..n-1]. This function 
+    // assumes that k is smaller than or equal to n. 
+    static int findMaxProduct(int arr[], int n, int k) 
+    { 
+        // Initialize the MaxProduct to 1, as all elements 
+        // in the array are positive 
+        int maxProduct = 1; 
+        for (int i=0; i<k; i++) 
+            maxProduct *= arr[i]; 
+   
+        int prev_product = maxProduct; 
+   
+        // Consider every product beginning with arr[i] 
+        // where i varies from 1 to n-k-1 
+        for (int i=1; i<=n-k; i++) 
+        { 
+            int curr_product = (prev_product/arr[i-1]) * arr[i+k-1]; 
+            maxProduct = Math.max(maxProduct, curr_product); 
+            prev_product = curr_product; 
+        } 
+   
+        // Return the maximum product found 
+        return maxProduct; 
+    } 
