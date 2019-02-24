@@ -11,7 +11,10 @@
 You might be asking why there are 2N-1 but not N centers?
 The reason is the center of a palindrome can be in between two letters. Such palindromes have even number of letters (such as “abba”) and its center are between the two ‘b’s.
 
-Since expanding a palindrome around its center could take O(N) time, the overall complexity is O(N2).
+Since expanding a palindrome around its center could take O(N) time, the overall complexity is O(N^2).
+
+Time  - O(n^2)
+Space -  O(1)
 
  */
 
