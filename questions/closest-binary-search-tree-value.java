@@ -78,33 +78,33 @@ public class Solution {
 
 public class Solution {
     public List<Integer> closestKValues(TreeNode root, double target, int k) {
-        LinkedList<Integer> list = new LinkedList<Integer>();
-        closestKValuesHelper(list, root, target, k);
+        Queue<Integer> result = new Queue<Integer>();
+        closestKValuesHelper(result, root, target, k);
         return list;
     }
     
     /**
-     * @return <code>true</code> if result is already found.
+     * @return true if result is already found.
      */
-    private boolean closestKValuesHelper(LinkedList<Integer> list, TreeNode root, double target, int k) {
+    private boolean closestKValuesHelper(Queue<Integer> result, TreeNode root, double target, int k) {
         
         if (root == null) {
             return false;
         }
         
-        if (closestKValuesHelper(list, root.left, target, k)) {
+        if (closestKValuesHelper(result, root.left, target, k)) {
             return true;
         }
         
-        if (list.size() == k) {
-            if (Math.abs(list.getFirst() - target) < Math.abs(root.val - target)) {
+        if (result.size() == k) {
+            if (Math.abs(result.peek() - target) < Math.abs(root.val - target)) { // if current value is greater than begin of queue
                 return true;
             } else {
-                list.removeFirst();
+                result.poll();
             }
         }  
         
-        list.addLast(root.val);
+        result.offer(root.val);
         
         
         return closestKValuesHelper(list, root.right, target, k);
