@@ -56,7 +56,7 @@ public class Solution {
             begin--;
             end++;
         }
-        return s.substring(begin+1, end);
+        return s.substring(begin+1, end); // begin+1 because we decrement the counter before so it could become -1 with indexOutOFBounds
     }
 
 }
