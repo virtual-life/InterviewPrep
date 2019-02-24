@@ -19,7 +19,7 @@ Output: [-1,-1]
 
 
 /*
- In normal finary search we return as soon as we find the element, instead to find teh first occurence,
+ In normal binary search we return as soon as we find the element, instead to find teh first occurence,
  continue searching towards the left with high = mid-1. 
  
  Similarly for last occurence low = mid+1
@@ -35,7 +35,7 @@ class Solution  {
     
         if(low <= high) { 
             int mid = low + (high - low)/2; 
-            if( ( mid == 0 || x > arr[mid-1]) && arr[mid] == x) 
+            if(arr[mid] == x && ( mid == 0 || x > arr[mid-1])) // x= mid 
                 return mid; 
              else if(x > arr[mid]) 
                 return first(arr, (mid + 1), high, x, n); 
@@ -53,7 +53,7 @@ class Solution  {
         if (low <= high) { 
         
             int mid = low + (high - low)/2; 
-            if (( mid == n-1 || x < arr[mid+1]) && arr[mid] == x) 
+            if (arr[mid] == x) && ( mid == n-1 || x < arr[mid+1])) // x= mid 
                  return mid; 
             else if (x < arr[mid]) 
                 return last(arr, low, (mid -1), x, n); 
