@@ -13,7 +13,7 @@ import java.util.PriorityQueue;
 
 public class Solution {
     public int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> q = new PriorityQueue<Integer>(k);
+        PriorityQueue<Integer> q = new PriorityQueue<Integer>(k, Collections.reverseOrder());
         for(int i: nums){
             q.offer(i);
 
@@ -59,7 +59,7 @@ public class Solution {
         if(nums.length < 3){
             k = 1;
         }
-        PriorityQueue<Integer> q = new PriorityQueue<Integer>(k);
+        PriorityQueue<Integer> q = new PriorityQueue<Integer>(k, Collections.reverseOrder());
         for(int i: nums){
             if(!q.contains(i)){
                 q.offer(i);
