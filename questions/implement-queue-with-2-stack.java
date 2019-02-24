@@ -1,11 +1,11 @@
 /*
-Implement a queue ↴ with 2 stacks. ↴ Your queue should have an enqueue and a dequeue method and it should be "first in first out" (FIFO).
+Implement a queue with 2 stacks. Your queue should have an enqueue and a dequeue method and it should be FIFO
 
-Optimize for the time cost of mm calls on your queue. These can be any mix of enqueue and dequeue calls.
+Optimize for the time cost of m calls on your queue. These can be any mix of enqueue and dequeue calls.
 
 Assume you already have a stack implementation and it gives O(1)O(1) time push and pop.
 
-Time - O(m) runtime for mm calls.
+Time - O(m) runtime for m calls.
 O(1) for each push / pop operation
 
 */
