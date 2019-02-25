@@ -58,7 +58,8 @@ public class Solution {
       for(int sublen=2; sublen<=n; sublen++){          
           for(int i=0;i<=n-sublen;i++){
               
-             int j = i+sublen-1;
+             int j = sublen+i-1;
+              
              if(s.charAt(i) == s.charAt(j) && sublen==2){
                  dp[i][j] = 2;
              }
