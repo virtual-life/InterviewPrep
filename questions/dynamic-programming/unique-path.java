@@ -31,12 +31,12 @@ public class Solution {
 public int uniquePaths(int m, int n) {
     int[][] dp = new int[m][n];
     
-    //left column - only 1 way of goung right 
+    //left column - only 1 way of going down 
     for(int i=0; i<m; i++){
         dp[i][0] = 1;
     }
  
-    //top row - only one way of going down 
+    //top row - only one way of going right 
     for(int j=0; j<n; j++){
         dp[0][j] = 1;
     }
