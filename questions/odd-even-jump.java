@@ -96,8 +96,10 @@ we can jump lower to 4, lower(5) = higher(4) = false
         boolean[] lower = new boolean[n];
      
         higher[n - 1] = lower[n - 1] = true;
+     
         TreeMap<Integer, Integer> map = new TreeMap<>();
-        map.put(A[n - 1], n - 1); // Treemap ordered by key ie in desecnding order // 5 1 3 4 2 
+     
+        map.put(A[n - 1], n - 1); // Treemap ordered by key ie in desecnding order
         // Map has  [2, 4] 
      
         for (int i = n - 2; i >= 0; --i) {
