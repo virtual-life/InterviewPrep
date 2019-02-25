@@ -49,21 +49,23 @@ Space - O(n)
 
 class Solution {
     public int totalFruit(int[] tree) {
-        int result = 0, start = 0;
+        int maxFruit = 0, start = 0;
         Counter count = new Counter();
         for (int end = 0; end < tree.length; end++) {
-            count.add(tree[j], 1);
-            while (count.size() >= 3) {
+         
+            count.add(tree[end], 1);
+         
+            while (count.size() >= 3) { // you have max of 2 baskets 
                 count.add(tree[start], -1);
                 if (count.get(tree[start]) == 0)
                     count.remove(tree[start]);
                 start++;
             }
 
-            result = Math.max(result, end - start + 1);
+            maxFruit = Math.max(maxFruit, end - start + 1);
         }
 
-        return ans;
+        return maxFruit;
     }
 }
 
