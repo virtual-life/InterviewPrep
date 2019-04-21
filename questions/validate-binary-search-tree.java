@@ -26,6 +26,8 @@ public class Solution {
      Iterative solution below can handle violations close to root node faster. -
 
      http://www.programcreek.com/2012/12/leetcode-validate-binary-search-tree-java/
+     
+     Time - n log n 
 
      */
 
