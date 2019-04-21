@@ -5,6 +5,8 @@ http://www.programcreek.com/2014/06/leetcode-the-skyline-problem-java/
 Alternate solution:
 
 https://github.com/mission-peace/interview/blob/master/src/com/interview/geometry/SkylineDrawing.java
+ * Time complexity is O(nlogn) - log runtime using treemap instead of priority queue
+ * Space complexity is O(n)
 
 
 Firstly, please notice what we need to achieve:
