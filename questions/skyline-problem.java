@@ -2,6 +2,33 @@
 https://discuss.leetcode.com/topic/28482/once-for-all-explanation-with-clean-java-code-o-n-2-time-o-n-space
 http://www.programcreek.com/2014/06/leetcode-the-skyline-problem-java/
 
+Alternate solution:
+
+https://github.com/mission-peace/interview/blob/master/src/com/interview/geometry/SkylineDrawing.java
+
+
+Firstly, please notice what we need to achieve:
+
+  1. visit all start points and all end points in order;
+  2. when visiting a point, we need to know whether it is a start point or a
+      end point, based on which we can add a height or delete a height from
+      our data structure;
+To achieve this, his implementation:
+
+  1. use a int[][] to collect all [start point, - height] and [end point, height]
+      for every building;
+  2. sort it, firstly based on the first value, then use the second to break
+      ties;
+Thus,
+
+  1. we can visit all points in order;
+  2. when points have the same value, higher height will shadow the lower one;
+  3. we know whether current point is a start point or a end point based on the
+      sign of its height;
+
+Time - O(n^2)
+Space - O(n)
+
 */
 
 public class Solution {
