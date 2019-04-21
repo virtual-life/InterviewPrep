@@ -29,7 +29,10 @@ import java.util.Map;
  
  If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.
  Topological Sort via DFS - A great video tutorial 
+ 
  https://www.youtube.com/watch?v=ddTC4Zovtbc&list=PLrmLmBdmIlpu2f2g8ltqaaCZiq6GJvl1j
+ 
+ https://github.com/mission-peace/interview/blob/master/src/com/interview/graph/TopologicalSort.java
  
  Topological sort could also be done via BFS.
 
