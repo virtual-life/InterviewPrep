@@ -28,7 +28,9 @@ import java.util.Map;
 
  
  If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.
- Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort.
+ Topological Sort via DFS - A great video tutorial 
+ https://www.youtube.com/watch?v=ddTC4Zovtbc&list=PLrmLmBdmIlpu2f2g8ltqaaCZiq6GJvl1j
+ 
  Topological sort could also be done via BFS.
 
  */
@@ -62,6 +64,7 @@ public class Solution {
 
         // First transform the edge list to adj. list
         Map<Integer, List<Integer>> adjList = new HashMap<>();
+     
         for (int[] edge : prerequisites) {
             if (adjList.containsKey(edge[0])) {
                 List<Integer> neighbors = adjList.get(edge[0]);
