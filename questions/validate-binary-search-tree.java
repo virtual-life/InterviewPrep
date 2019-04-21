@@ -10,6 +10,7 @@ public class Solution {
         return isValidBST(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
     }
 
+    // pre order traversal 
     public boolean isValidBST(TreeNode root, double min, double max){
             if(root==null)
                 return true;
